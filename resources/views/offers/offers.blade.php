@@ -25,7 +25,7 @@
                                             alt="{{ $transaction->product->title }}" class="img-fluid rounded-top-4">
                                     </div>
                                 @else
-                                    <img src="https://source.unsplash.com/500x400?{{ $transaction->product->category->slug }}"
+                                    <img src="https://source.unsplash.com/500x400?{{ $transaction->product->category->category_name }}"
                                         class="card-img-top rounded-top-4"
                                         alt="{{ $transaction->product->category->category_name }}"
                                         style="overflow: hidden; max-height: 10em">

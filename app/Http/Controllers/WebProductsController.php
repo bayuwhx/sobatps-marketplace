@@ -54,7 +54,9 @@ class WebProductsController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('product-images');
+            // $validatedData['image'] = $request->file('image')->store('ProductImages');
+            $filename = $request->file('image')->store('product-images', 'public');
+            $validatedData['image'] = 'storage/' . $filename;
         }
 
         $validatedData['user_id'] = auth()->user()->id;
@@ -120,7 +122,7 @@ class WebProductsController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('product-images');
+            $validatedData['image'] = $request->file('image')->store('product-images', 'public');
         }
 
         $validatedData['user_id'] = auth()->user()->id;

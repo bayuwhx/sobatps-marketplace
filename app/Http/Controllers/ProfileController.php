@@ -110,7 +110,7 @@ class ProfileController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('profile-images');
+            $validatedData['image'] = $request->file('image')->store('profile-images', 'public');
         }
 
         User::where('id', Auth::user()->id)->update($validatedData);

@@ -23,7 +23,7 @@
         <h1 class="text-center mb-5">untuk kebutuhan anda!</h1>
         <div class="row">
             <div class="col-6 d-flex justify-content-end">
-                <a href="/products?category=wood">
+                <a href="/products?category=hhk">
                     <div class="g-0 d-flex justify-content-center align-items-center" style="width: 30rem;">
                         <img class="card-img-top text-white p-0" src="/img/hhk.png" alt="Hasil Hutan Kayu">
                         <h1 class="text-center position-absolute text-white">Hasil Hutan Kayu</h1>
@@ -31,7 +31,7 @@
                 </a>
             </div>
             <div class="col-6">
-                <a href="/products?category=materials">
+                <a href="/products?category=hhbk">
                     <div class="g-0 d-flex justify-content-center align-items-center" style="width: 30rem;">
                         <img class="card-img-top p-0 " src="/img/hhkb.png" alt="Card image cap">
                         <h1 class="text-center position-absolute text-white">Hasil Hutan Bukan Kayu</h1>

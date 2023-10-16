@@ -13,8 +13,8 @@ class Product extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $guarded = ['id'];
-    protected $with = ['category', 'user'];
+    protected $guarded = [];
+    protected $with = ['category'];
 
     public function scopeFilter($query, array $filters)
     {
@@ -28,12 +28,6 @@ class Product extends Model
                 $query->where('slug', $category);
             });
         });
-
-        $query->when($filters['user'] ?? false, fn($query, $user) =>
-            $query->whereHas('user', fn($query) =>
-                $query->where('username', $user)
-            )
-        );
     }
 
     public function user()
