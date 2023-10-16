@@ -79,7 +79,7 @@ class ApiAuthController extends Controller
 
         if ($request->hasFile('image')) {
             if ($user->image) {
-                $destination = public_path($user->image);
+                $destination = public_path('img/' . $user->image);
                 if (File::exists($destination)) {
                     File::delete($destination);
                 }
@@ -93,7 +93,7 @@ class ApiAuthController extends Controller
                 //!! Firebase
             }
 
-            $filename = $request->file('image')->store('profile-images', 'public');
+            $filename = $request->file('image')->store('profile-images', 'public_uploads');
 
             //!! Firebase
             // $imageData = $request->input('image');

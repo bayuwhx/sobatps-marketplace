@@ -173,7 +173,7 @@
                     <div class="card rounded-4 mb-3 shadow border-0 overflow-hidden" style="">
                         @if ($product->image)
                             <div style="overflow:hidden; width: auto; max-height: 10em">
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}"
+                                <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->title }}"
                                     class="img-fluid rounded-top-4">
                             </div>
                         @else

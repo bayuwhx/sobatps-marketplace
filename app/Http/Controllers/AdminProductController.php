@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -45,27 +46,24 @@ class AdminProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'category_id' => 'required|exists:categories,id',
             'slug' => 'required|unique:products|max:255',
             'price' => 'required',
             'stock' => 'required',
-            'source' => 'required',
-            'function' => 'required',
             'image' => 'image|file|max:1024',
             'description' => 'required',
         ]);
 
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('product-images');
+            $validatedData['image'] = $request->file('image')->store('product-images', 'public_uploads');
+            // $filename = $request->file('image')->store('product-images', 'public_uploads');
         }
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->description), 100);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
 
-        // dd($validatedData);
         Product::create($validatedData);
 
         return redirect('/products')->with('createProduct', 'New product has been posted');
@@ -106,7 +104,6 @@ class AdminProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        // dd($request);
         $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required|exists:categories,id',
@@ -124,9 +121,12 @@ class AdminProductController extends Controller
 
         if ($request->file('image')) {
             if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+                $destination = public_path('img/' . $request->oldImage);
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
             }
-            $validatedData['image'] = $request->file('image')->store('product-images');
+            $validatedData['image'] = $request->file('image')->store('product-images', 'public_uploads');
         }
 
         $validatedData['user_id'] = auth()->user()->id;
@@ -147,7 +147,10 @@ class AdminProductController extends Controller
     public function destroy(Product $product)
     {
         if ($product->image) {
-            Storage::delete($product->image);
+            $destination = public_path('img/' . $product->image);
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
         }
         Product::destroy($product->id);
 

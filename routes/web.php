@@ -67,6 +67,10 @@ Route::put('/profile/image/{user:username}', [ProfileController::class, 'updateI
 // Profile User
 Route::resource('/profile', ProfileController::class)->scoped(['user' => 'username'])->middleware('auth');
 
+// Buat Produk Baru New
+Route::post('/admin/createproduct', [WebProductsController::class, 'createProduct'])->middleware('auth');
+// Update Produk New
+Route::put('/admin/updateproduct/{product:slug}', [WebProductsController::class, 'updateProduct'])->middleware('auth');
 // checkSlug
 Route::get('/admin/product/checkSlug', [WebProductsController::class, 'checkSlug'])->middleware('auth');
 // Admin Controller

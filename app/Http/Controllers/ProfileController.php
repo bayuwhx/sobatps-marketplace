@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -108,9 +109,12 @@ class ProfileController extends Controller
 
         if ($request->file('image')) {
             if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+                $destination = public_path('img/' . $request->oldImage);
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
             }
-            $validatedData['image'] = $request->file('image')->store('profile-images', 'public');
+            $validatedData['image'] = $request->file('image')->store('profile-images', 'public_uploads');
         }
 
         User::where('id', Auth::user()->id)->update($validatedData);

@@ -74,7 +74,7 @@ class ApiProductController extends Controller
 
         $filename = "";
         if ($request->hasFile('image')) {
-            $filename = $request->file('image')->store('product-images', 'public');
+            $filename = $request->file('image')->store('product-images', 'public_uploads');
         }
 
         //!! Firebase
@@ -146,7 +146,7 @@ class ApiProductController extends Controller
 
         if ($request->hasFile('image')) {
             if ($product->image) {
-                $destination = public_path($product->image);
+                $destination = public_path('img/' . $product->image);
                 if (File::exists($destination)) {
                     File::delete($destination);
                 }
@@ -160,7 +160,7 @@ class ApiProductController extends Controller
                 //!! Firebase
             }
 
-            $filename = $request->file('image')->store('product-images', 'public');
+            $filename = $request->file('image')->store('product-images', 'public_uploads');
 
             //!! Firebase
             // $imageData = $request->input('image');
@@ -211,7 +211,7 @@ class ApiProductController extends Controller
         }
 
         if ($product->image) {
-            $destination = public_path($product->image);
+            $destination = public_path('img/' . $product->image);
             if (File::exists($destination)) {
                 File::delete($destination);
             }
