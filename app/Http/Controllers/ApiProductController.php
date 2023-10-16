@@ -55,6 +55,9 @@ class ApiProductController extends Controller
             'category_id' => 'required',
             'title' => 'required',
             'description' => 'required',
+            'source' => 'required',
+            'function' => 'required',
+            'stock' => 'required',
             'price' => 'required',
             'image' => 'required',
         ]);
@@ -69,6 +72,10 @@ class ApiProductController extends Controller
             'category_id' => request('category_id'),
             'title' => request('title'),
             'description' => request('description'),
+            'source' => request('source'),
+            'function' => request('function'),
+            'stock' => request('stock'),
+            'published_at' => date("Y-m-d H:i:s"),
             'price' => request('price'),
         ]);
 
@@ -126,6 +133,9 @@ class ApiProductController extends Controller
             'category_id' => 'required',
             'title' => 'required',
             'description' => 'required',
+            'source' => 'required',
+            'function' => 'required',
+            'stock' => 'required',
             'price' => 'required',
             'isSold' => 'required',
         ]);
@@ -185,6 +195,9 @@ class ApiProductController extends Controller
         $product->category_id = $request->category_id;
         $product->title = $request->title;
         $product->description = $request->description;
+        $product->source = $request->source;
+        $product->function = $request->function;
+        $product->stock = $request->stock;
         $product->price = $request->price;
         $product->isSold = $request->isSold;
         $product->save();

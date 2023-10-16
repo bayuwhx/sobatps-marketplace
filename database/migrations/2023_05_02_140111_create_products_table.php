@@ -21,13 +21,13 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->text('excerpt')->nullable();
             $table->text('description');
-            $table->text('source');
-            $table->text('function');
+            $table->text('source')->nullable();
+            $table->text('function')->nullable();
             $table->integer('price');
             $table->string('image')->nullable();
-            $table->integer('stock');
+            $table->integer('stock')->nullable();
             $table->boolean('isSold')->default(false);
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

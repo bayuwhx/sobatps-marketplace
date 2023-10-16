@@ -147,13 +147,13 @@
                                         <div class="col-6">
                                             <button type="sumbit"
                                                 class="btn btn-success btn-block w-100 font-weight-bold mt-3" name="status"
-                                                id="status" value="accept">Terima
+                                                id="status" value="accepted">Terima
                                                 Tawaran</button>
                                         </div>
                                         <div class="col-6">
                                             <button type="sumbit"
                                                 class="btn btn-danger btn-block w-100 font-weight-bold mt-3" name="status"
-                                                id="status" value="reject">Tolak
+                                                id="status" value="rejected">Tolak
                                                 Tawaran</button>
                                         </div>
                                     </div>

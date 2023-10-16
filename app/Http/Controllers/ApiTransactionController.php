@@ -30,7 +30,7 @@ class ApiTransactionController extends Controller
         $user = auth()->guard('api')->user();
         $user = User::find($user->id);
 
-        $cart = Transaction::with('product')
+        $cart = Transaction::with('product', 'seller')
             ->where('buyer_id', $user->id)
             ->where(function ($query) {
                 $query->where('status', "pending")
@@ -47,7 +47,7 @@ class ApiTransactionController extends Controller
         $user = auth()->guard('api')->user();
         $user = User::find($user->id);
 
-        $cart = Transaction::with('product')->find($id);
+        $cart = Transaction::with('product', 'seller')->find($id);
 
         return response()->json(new CartShow($cart));
     }
@@ -57,7 +57,7 @@ class ApiTransactionController extends Controller
         $user = auth()->guard('api')->user();
         $user = User::find($user->id);
 
-        $history = Transaction::with('product')
+        $history = Transaction::with('product', 'seller')
             ->where('buyer_id', $user->id)
             ->where('status', "done")
             ->latest()
@@ -71,7 +71,7 @@ class ApiTransactionController extends Controller
         $user = auth()->guard('api')->user();
         $user = User::find($user->id);
 
-        $notification = Transaction::with('product')
+        $notification = Transaction::with('product', 'seller')
             ->where('buyer_id', $user->id)
             ->where(function ($query) {
                 $query->where('status', "rejected")
@@ -109,7 +109,7 @@ class ApiTransactionController extends Controller
         $user = auth()->guard('api')->user();
         $user = User::find($user->id);
 
-        $transaction = Transaction::with('product.user')->where('buyer_id', $user->id)->latest()->get();
+        $transaction = Transaction::with('product', 'seller')->where('buyer_id', $user->id)->latest()->get();
 
         if ($request['search_status']) {
             $searchStatus = $request['search_status'];
@@ -156,7 +156,7 @@ class ApiTransactionController extends Controller
     {
         // $user = auth()->guard('api')->user();
 
-        $transactions = Transaction::with('product.user')->find($id);
+        $transactions = Transaction::with('product', 'seller')->find($id);
 
         return response()->json(new TransactionShow($transactions));
     }
