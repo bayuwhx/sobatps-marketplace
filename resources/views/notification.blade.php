@@ -29,7 +29,7 @@
                                                             </h4>
                                                         </div>
                                                         <div class="col-10">
-                                                            <h5 class=""><strong>Barang Sedang Ditawar!</strong></h5>
+                                                            <h5 class=""><strong>Produk Sedang Ditawar!</strong></h5>
                                                             <p><strong>
                                                                     {{ $notification->buyer->name }}
                                                                 </strong>
@@ -42,7 +42,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                @elseif ($notification->status == 'accept')
+                                                @elseif ($notification->status == 'accepted')
                                                     <div class="row">
                                                         <div class="col-2 d-flex justify-content-center">
                                                             <h4><i
@@ -61,7 +61,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                @elseif ($notification->status == 'reject')
+                                                @elseif ($notification->status == 'rejected')
                                                     <div class="row">
                                                         <div class="col-2 d-flex justify-content-center">
                                                             <h4><i class="bi bi-x-circle-fill text-danger text-lg"></i>
@@ -74,24 +74,7 @@
                                                                 <strong>{{ $notification->product->title }}</strong> dengan
                                                                 tawaran
                                                                 <strong>Rp.{{ number_format($notification->price, 2, ',', '.') }}</strong>
-                                                                telah berhasil dibatalkan.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                @elseif ($notification->status == 'cancel')
-                                                    <div class="row">
-                                                        <div class="col-2 d-flex justify-content-center">
-                                                            <h4><i class="bi bi-x-circle-fill text-danger text-lg"></i>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="col-10">
-                                                            <h5 class=""><strong>Penawaran Ditolak!</strong></h5>
-                                                            <p>
-                                                                Tawaran produk
-                                                                <strong>{{ $notification->product->title }}</strong> dengan
-                                                                tawaran
-                                                                <strong>Rp.{{ number_format($notification->price, 2, ',', '.') }}</strong>
-                                                                telah ditolak.
+                                                                telah dibatalkan.
                                                             </p>
                                                         </div>
                                                     </div>
@@ -169,7 +152,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                @elseif ($notification->status == 'accept')
+                                                @elseif ($notification->status == 'accepted')
                                                     <div class="row">
                                                         <div class="col-2 d-flex justify-content-center">
                                                             <h4><i
@@ -189,7 +172,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                @elseif ($notification->status == 'reject')
+                                                @elseif ($notification->status == 'rejected')
                                                     <div class="row">
                                                         <div class="col-2 d-flex justify-content-center">
                                                             <h4><i class="bi bi-x-circle-fill text-danger text-lg"></i>
@@ -201,24 +184,7 @@
                                                             <p>
                                                                 Tawaranmu untuk
                                                                 <strong>{{ $notification->product->title }}</strong>
-                                                                ditolak oleh penjual,
-                                                                Terimakasih telah menggunakan jasa kami
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                @elseif ($notification->status == 'cancel')
-                                                    <div class="row">
-                                                        <div class="col-2 d-flex justify-content-center">
-                                                            <h4><i class="bi bi-x-circle-fill text-danger text-lg"></i>
-                                                            </h4>
-                                                        </div>
-                                                        <div class="col-10">
-                                                            <h5 class=""><strong>Penawaran Dibatalkan!</strong>
-                                                            </h5>
-                                                            <p>
-                                                                Kamu membatalkan tawaran pada produk
-                                                                <strong>{{ $notification->product->title }}</strong>,
-                                                                Terimakasih telah menggunakan jasa kami
+                                                                telah dibatalkan! Silahkan melakukan penawaran kembali.
                                                             </p>
                                                         </div>
                                                     </div>
@@ -233,7 +199,8 @@
                                                             </h5>
                                                             <p>Transaksimu untuk produk
                                                                 <strong>{{ $notification->product->title }}</strong>
-                                                                telah selesai. Terimakasih telah mempercayai kami
+                                                                telah selesai. Terimakasih telah melakukan transaksi dengan
+                                                                kami
                                                             </p>
                                                         </div>
                                                     </div>
@@ -292,12 +259,10 @@
                             <div class="border-bottom border-success border-3 mt-5"></div>
                         </div>
                     </div>
-
-
                     <div class="container d-flex flex-column justify-content-center align-items-center opacity-50"
                         style="height: 30em">
-                        <img src="/img/aman.png" alt="">
-                        <h4 class="text-muted text-center">Tidak ada barang yang ditawar</h4>
+                        <img src="/img/empty-list.png" alt="" width="40%">
+                        <h4 class="text-muted text-center">Belum ada update tawaran</h4>
                     </div>
                 </div>
             </div>

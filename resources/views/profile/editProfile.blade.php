@@ -14,20 +14,21 @@
                             <input class="form-label" type="hidden" name="oldImage" value="{{ $user->image }}">
                             @if ($user->image)
                                 <img src="{{ asset('storage/' . $user->image) }}"
-                                    class="img-preview rounded-circle img-fluid mb-3" id="imagePreview"
-                                    style="display:block">
+                                    class="img-preview rounded-circle img-fluid" id="imagePreview" style="display:block">
                             @else
                                 <div>
-                                    <img src="" class="img-preview rounded-circle img-fluid mb-3" id="imagePreview"
-                                        style="max-height: 10em; overflow:hidden">
+                                    <img src="/img/default_profile.jpg" class="img-preview rounded-circle img-fluid mb-3"
+                                        id="imagePreview" style="max-height: 10em; overflow:hidden">
                                 </div>
                             @endif
 
                             <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
                                 name="image" onchange="previewImage()" style="visibility:hidden">
 
-                            <div class="border-bottom border-2 mt-2 mb-4"></div>
-
+                            <label for="image" class="btn btn-outline-success btn-block form-label">Unggah Foto</label>
+                            <button type="submit" class="btn btn-outline-success btn-block mb-3">Simpan
+                                Foto</button>
+                            <div class="border-bottom border-2 mt-4 mb-2"></div>
                             @error('image')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -36,17 +37,13 @@
 
                         </form>
                     </div>
-
-
-
                     <div class="col-lg d-flex justify-content-center mb-1">
-                        <a href="/profile/{{ $user->username }}/edit"
-                            class="btn btn-outline-success w-100 btn-block border-0 active"><i
+                        <a href="/profile/{{ $user->username }}/edit" class="btn btn-success w-100 btn-block border-0"><i
                                 class="bi bi-pencil-square"></i>
-                            Edit Profile</a>
+                            Ubah Data Diri</a>
                     </div>
                     <div class="col-lg d-flex justify-content-center mb-1">
-                        <button type="button" class="btn btn-outline-success w-100 btn-block border-0">Reset
+                        <button type="button" class="btn btn-outline-success w-100 btn-block border-0">Ubah
                             Password</button>
                     </div>
                     @if (auth()->user()->isAdmin)
@@ -56,13 +53,13 @@
                                 Penjualan</a>
                         </div>
                     @else
-                        <div class="col-lg d-flex justify-content-center mb-5 w-100">
-                            <a href="/purchase/records" class="btn btn-outline-success w-100 btn-block border-0"><i
+                        <div class="col-lg d-flex justify-content-center mb-4 w-100">
+                            <a href="/purchase/history" class="btn btn-outline-success w-100 btn-block border-0"><i
                                     class="bi bi-receipt-cutoff"></i>Histori
                                 Pembelian</button></a>
                         </div>
                     @endif
-                    <div class="col-lg d-flex justify-content-center mt-3 mb-3">
+                    <div class="col-lg d-flex justify-content-center mt-2 pb-2">
                         <form action="/logout" method="post" class="btn btn-danger">
                             @csrf
                             <button type="submit" class="btn dropdown-item btn-danger" style="border:1rem">
@@ -70,9 +67,7 @@
                                 </i>
                                 Logout</button>
                         </form>
-
                     </div>
-
                 </div>
             </div>
         </div>

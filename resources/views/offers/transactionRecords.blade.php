@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @elseif ($transaction->status == 'cancel')
+                        @elseif ($transaction->status == 'rejected')
                             <div class="card mb-4 rounded-4 mb-3 shadow border-2 border-danger">
                                 <div class="card-body">
                                     <div class="row">
@@ -176,19 +176,14 @@
                                                     </p>
                                                 </div>
                                             </div>
-
-
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                         @endif
                     @empty
                         <p>Tidak ada transaksi</p>
                     @endforelse
-
                     {{ $transactions->links() }}
                 </div>
             </div>
@@ -205,12 +200,10 @@
                             <div class="border-bottom border-success border-3 mt-5"></div>
                         </div>
                     </div>
-
-
                     <div class="container d-flex flex-column justify-content-center align-items-center opacity-50"
                         style="height: 30em">
-                        <img src="/img/shopping.png" alt="">
-                        <h4 class="text-muted text-center">Tidak ada barang yang ditawar</h4>
+                        <img src="/img/empty-list.png" alt="" width="40%">
+                        <h4 class="text-muted text-center">Belum ada tawaran selesai.</h4>
                     </div>
                 </div>
             </div>

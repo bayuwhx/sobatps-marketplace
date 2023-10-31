@@ -3,94 +3,6 @@
 @section('container')
     <div class="container-fluid g-0 shadow border-0">
         @if ($products->count())
-            {{-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-
-                    <div class="carousel-item active" style="max-height:400px">
-                        <img src="https://source.unsplash.com/1200x400?{{ $products[0]->category->category_name }}"
-                            class="d-block w-100" alt="{{ $products[0]->category->category_name }}"
-                            style="overflow:hidden
-                            ">
-                        <div class="carousel-caption d-lg-block">
-                            <h5>{{ $products[0]->title }}</h5>
-                            <p>{{ $products[0]->excerpt }}</p>
-                            <a href="/products/{{ $products[0]->slug }}"
-                                class="text-decoration-none btn btn-success p-2">Lihat
-                                Produk</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="max-height:400px">
-                        <img src="https://source.unsplash.com/1200x400?{{ $products[1]->category->category_name }}"
-                            class="d-block w-100" alt="{{ $products[1]->category->category_name }}"
-                            style="overflow:hidden
-                            ">
-                        <div class="carousel-caption d-lg-block">
-                            <h5>{{ $products[1]->title }}</h5>
-                            <p>{{ $products[1]->excerpt }}</p>
-                            <a href="/products/{{ $products[1]->slug }}"
-                                class="text-decoration-none btn btn-success p-2">Lihat
-                                Produk</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="max-height:400px">
-                        <img src="https://source.unsplash.com/1200x400?{{ $products[2]->category->category_name }}"
-                            class="d-block w-100" alt="{{ $products[2]->category->category_name }}"
-                            style="overflow:hidden
-                            ">
-                        <div class="carousel-caption d-lg-block">
-                            <h5>{{ $products[2]->title }}</h5>
-                            <p>{{ $products[2]->excerpt }}</p>
-                            <a href="/products/{{ $products[2]->slug }}"
-                                class="text-decoration-none btn btn-success p-2">Lihat
-                                Produk</a>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div> --}}
-            {{-- <div class="card mb-4">
-                @if ($products[0]->image)
-                    <div style="max-height:25em; overflow:hidden; center">
-                        <img src="{{ asset('storage/' . $products[0]->image) }}" alt="{{ $products[0]->title }}"
-                            class="mx-auto d-block rounded-top">
-                    </div>
-                @else
-                    <img src="https://source.unsplash.com/1200x400?{{ $products[0]->category->slug }}"
-                        alt="{{ $products[0]->title }}" class="img-fluid rounded-top">
-                @endif
-
-                <div class="card-body text-center">
-                    <h3 class="card-title"><a href="/products/{{ $products[0]->slug }}"
-                            class="text-decoration-none text-dark">{{ $products[0]->title }}</a></h3>
-                    <p class="card-text">{{ $products[0]->excerpt }}</p>
-                    <h6>Harga : Rp. {{ number_format($products[0]->price, 2, ',', '.') }}</h6>
-                    <h6>Kategori produk <a href="/categories/{{ $products[0]->category->slug }}"
-                            class="text-decoration-none">{{ $products[0]->category->category_name }}</a>
-                    </h6>
-                    <p class="card-text"><small
-                            class="text-body-secondary">{{ $products[0]->created_at->toFormattedDateString() }}</small></p>
-
-                    <a href="/products/{{ $products[0]->slug }}" class="text-decoration-none btn btn-success">Lihat
-                        produk</a>
-                </div>
-            </div> --}}
     </div>
     <div class="container">
         @auth
@@ -205,7 +117,8 @@
         </div>
     </div>
 @else
-    <p class="text-center fs-4">No post found.</p>
+    <p class="text-center fs-4">Belum ada produk dipasarkan.</p>
+    <img src="/img/empty-cart.jpg" alt="">
     @endif
     <div class="d-flex justify-content-center">
         {{ $products->links() }}

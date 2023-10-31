@@ -13,9 +13,6 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('products*') ? 'active' : '' }}" href="/products">Produk</a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link {{ Request::is('categories*') ? 'active' : '' }}" href="/categories">Kategori</a>
-                </li> --}}
                 @auth
                     @if (auth()->user()->isAdmin)
                         <li class="nav-item">
@@ -30,11 +27,6 @@
                     @endif
                 @else
                 @endauth
-                {{-- @can('admin')
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('purchase*') ? 'active' : '' }}" href="/purchase">Diminati</a>
-                        </li>
-                    @endcan --}}
             </ul>
             <form action="/products" class="d-flex me-auto my-2 my-lg-0 navbar-nav-scroll mx-auto w-50" role="search">
                 @if (request('category'))
@@ -51,6 +43,15 @@
             </form>
             <ul class="navbar-nav sm-auto">
                 @auth
+                    <li class="nav-item">
+                        @if (auth()->user()->isAdmin)
+                            <a class="nav-link {{ Request::is('notification*') ? 'active' : '' }}"
+                                href="/notification/seller"><i class="bi bi-bell"></i></a>
+                        @else
+                            <a class="nav-link {{ Request::is('notification*') ? 'active' : '' }}" href="/notification"><i
+                                    class="bi bi-bell"></i></a>
+                        @endif
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -60,22 +61,13 @@
                             <li><a class="dropdown-item" href="/profile/{{ auth()->user()->username }}"><i
                                         class="bi bi-person-square"></i>
                                     My Profile</a></li>
-                            <li>
-                                @if (auth()->user()->isAdmin)
-                            <li><a class="dropdown-item" href="/purchase/records"><i class="bi bi-receipt-cutoff"></i>
-                                    Histori Penjualan</a></li>
-                            <li>
-                            <li><a class="dropdown-item" href="/notification/seller"><i class="bi bi-bell"></i></i>
-                                    Notifikasi</a></li>
-                            <li>
+                            @if (auth()->user()->isAdmin)
+                                <li><a class="dropdown-item" href="/purchase/records"><i class="bi bi-receipt-cutoff"></i>
+                                        Histori Penjualan</a></li>
                             @else
-                            <li><a class="dropdown-item" href="/purchase/history"><i class="bi bi-receipt-cutoff"></i>
-                                    Histori Penawaran</a></li>
-                            <li>
-                            <li><a class="dropdown-item" href="/notification"><i class="bi bi-bell"></i></i>
-                                    Notifikasi</a></li>
-                            <li>
-                                @endif
+                                <li><a class="dropdown-item" href="/purchase/history"><i class="bi bi-receipt-cutoff"></i>
+                                        Histori Penawaran</a></li>
+                            @endif
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

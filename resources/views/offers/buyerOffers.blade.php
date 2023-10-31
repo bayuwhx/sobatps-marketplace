@@ -93,8 +93,8 @@
     </div>
 @else
     <div class="container d-flex flex-column justify-content-center align-items-center opacity-50" style="height: 30em">
-        <img src="/img/aman.png" alt="">
-        <h4 class="text-muted text-center">Tidak ada barang yang ditawar</h4>
+        <img src="/img/empty-cart.png" alt="" width="30%">
+        <h4 class="text-muted text-center">Tidak ada produk yang ditawar</h4>
     </div>
     @endif
     <div class="d-flex justify-content-center">

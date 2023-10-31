@@ -19,7 +19,6 @@
             @endif
         </div>
         <div class="row justify-content-center mt-5">
-
             <div class="col-lg-4">
                 <div class="card m-auto shadow border-0 rounded-4 mb-3" style="width: 80%">
                     <div class="card-body ">
@@ -36,18 +35,16 @@
                                         style="display:block">
                                 @else
                                     <div>
-                                        <img src="" class="img-preview rounded-circle img-fluid mb-3"
+                                        <img src="/img/default_profile.jpg" class="img-preview rounded-circle img-fluid"
                                             id="imagePreview" style="max-height: 10em; overflow:hidden">
                                     </div>
                                 @endif
 
-
-
                                 <input class="form-control @error('image') is-invalid @enderror" type="file"
                                     id="image" name="image" onchange="previewImage()" style="visibility:hidden">
 
-                                <label for="image" class="btn btn-outline-success btn-block border-0 form-label">Upload
-                                    Photo</label>
+                                <label for="image" class="btn btn-outline-success btn-block form-label">Unggah
+                                    Foto</label>
                                 <button type="submit" class="btn btn-success btn-block mb-3">Simpan
                                     Foto</button>
                                 <div class="border-bottom border-2 mt-4 mb-2"></div>
@@ -62,10 +59,10 @@
                         <div class="col-lg d-flex justify-content-center mb-1">
                             <a href="/profile/{{ $user->username }}/edit"
                                 class="btn btn-outline-success w-100 btn-block border-0"><i class="bi bi-pencil-square"></i>
-                                Edit Profile</a>
+                                Ubah Data Diri</a>
                         </div>
                         <div class="col-lg d-flex justify-content-center mb-1">
-                            <button type="button" class="btn btn-outline-success w-100 btn-block border-0">Reset
+                            <button type="button" class="btn btn-outline-success w-100 btn-block border-0">Ubah
                                 Password</button>
                         </div>
                         @if (auth()->user()->isAdmin)
