@@ -40,7 +40,7 @@
                 </div> --}}
                 @if ($product->image)
                     <div style="max-height:20em;" class="rounded-3 mb-lg-0 mb-sm-3">
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}"
+                        <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->title }}"
                             class="img-fluid rounded-top">
                     </div>
                 @else
@@ -71,11 +71,17 @@
                             <h6 class="descript mb-3">Deskripsi Produk
                             </h6>
                             <p class="description">{!! $product->description !!}</p>
+                            <h6 class="descript mb-3">Sumber Produk
+                            </h6>
+                            <div class="">
+                                <p class="description">{{ $product->source }}</p>
+                            </div>
+                            <h6 class="descript mb-3">Kegunaan
+                            </h6>
+                            <div class="">
+                                <p class="description">{{ $product->function }}</p>
+                            </div>
                         </div>
-
-
-
-
                     </div>
                 </div>
                 <div class="card mb-3 border-0 rounded-4 shadow-lg">

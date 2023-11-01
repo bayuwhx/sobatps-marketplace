@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminProductController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\WebProductController;
-use App\Http\Controllers\WebProductsController;
-use App\Http\Controllers\WebRegisterController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -52,17 +51,17 @@ Route::get('/categories', function () {
 
 // AUTHENTICATION
 // Halaman Login
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 // Login
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [AuthController::class, 'login']);
 // Logout
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 // REGISTRATION
 // Halaman Register
-Route::get('/register', [WebRegisterController::class, 'index'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 // Registrasi User
-Route::post('/register', [WebRegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store']);
 
 // PROFILE MANAGEMENT
 // Profile User
@@ -72,19 +71,19 @@ Route::resource('/profile', ProfileController::class)->scoped(['user' => 'userna
 
 // PRODUCT MANAGEMENT
 // checkSlug
-Route::get('/admin/product/checkSlug', [WebProductsController::class, 'checkSlug'])->middleware('auth');
+Route::get('/admin/product/checkSlug', [AdminProductController::class, 'checkSlug'])->middleware('auth');
 // Admin Controller
 Route::resource('/admin/product', AdminProductController::class)->scoped(['product' => 'slug'])->middleware('auth');
 
 // PRODUCT VIEW
 // Haaman semua produk
-Route::get('/products', [WebProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'index']);
 // Halaman detail produk
-Route::get('products/{product:slug}', [WebProductController::class, 'show']);
+Route::get('products/{product:slug}', [ProductController::class, 'show']);
 
 // TRANSACTION MANAGEMENT
 // Halaman pembelian
-Route::get('/purchase/product/{product:slug}', [WebProductController::class, 'purchase'])->middleware('auth');
+Route::get('/purchase/product/{product:slug}', [ProductController::class, 'purchase'])->middleware('auth');
 // Halaman Daftar pembelian buyer
 Route::get('/purchase/offers', [TransactionController::class, 'buyerOffers'])->middleware('auth');
 // Halaman Daftar pembelian buyer

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class WebRegisterController extends Controller
+class RegisterController extends Controller
 {
     public function index()
     {
@@ -14,6 +14,7 @@ class WebRegisterController extends Controller
             'active' => 'register',
         ]);
     }
+
     public function store(Request $request)
     {
 
