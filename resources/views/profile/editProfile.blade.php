@@ -13,8 +13,8 @@
 
                             <input class="form-label" type="hidden" name="oldImage" value="{{ $user->image }}">
                             @if ($user->image)
-                                <img src="{{ asset('storage/' . $user->image) }}"
-                                    class="img-preview rounded-circle img-fluid" id="imagePreview" style="display:block">
+                                <img src="{{ asset('img/' . $user->image) }}" class="img-preview rounded-circle img-fluid"
+                                    id="imagePreview" style="display:block">
                             @else
                                 <div>
                                     <img src="/img/default_profile.jpg" class="img-preview rounded-circle img-fluid mb-3"
@@ -140,7 +140,7 @@
                         </div>
                     @enderror
                 </div>
-                <button class="h3 w-100 btn btn-success btn-lg mt-2 rounded-4" type="submit">Save</button>
+                <button class="h3 w-100 btn btn-success btn-lg mt-2 rounded-4" type="submit">Simpan</button>
             </form>
         </div>
     </div>

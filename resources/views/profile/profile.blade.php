@@ -30,7 +30,7 @@
 
                                 <input class="form-label" type="hidden" name="oldImage" value="{{ $user->image }}">
                                 @if ($user->image)
-                                    <img src="{{ asset('storage/' . $user->image) }}"
+                                    <img src="{{ asset('img/' . $user->image) }}"
                                         class="img-preview rounded-circle img-fluid" id="imagePreview"
                                         style="display:block">
                                 @else

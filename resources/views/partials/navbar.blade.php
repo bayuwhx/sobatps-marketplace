@@ -16,13 +16,16 @@
                 @auth
                     @if (auth()->user()->isAdmin)
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('purchase*') ? 'active' : '' }}" href="/purchase">Diminati</a>
+                            <a class="nav-link {{ Request::is('purchase*') ? 'active' : '' }}" href="/purchase">Pesanan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin*') ? 'active' : '' }}" href="/admin/product">Produk
+                                Saya</a>
                         </li>
                     @else
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('purchase*') ? 'active' : '' }}"
-                                href="/purchase/offers">Transaksi
-                                Berlangsung</a>
+                                href="/purchase/offers">Penawaran</a>
                         </li>
                     @endif
                 @else

@@ -1,60 +1,151 @@
-@extends('dashboard.layouts.main')
+@extends('layouts.main')
 
 @section('container')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Produk dari, {{ Auth::user()->name }}</h1>
+    <div class="container-fluid g-0 border-0">
+        @if ($products->count())
     </div>
-    @if (session()->has('createProduct'))
-        <div class="alert alert-success col-lg-8" role="alert">
-            {{ session('createProduct') }}
-        </div>
-    @elseif(session()->has('successDelete'))
-        <div class="alert alert-danger col-lg-8" role="alert">
-            {{ session('successDelete') }}
-        </div>
-    @elseif(session()->has('successUpdate'))
-        <div class="alert alert-success col-lg-8" role="alert">
-            {{ session('successUpdate') }}
-        </div>
-    @endif
-    <div class="table-responsive col-lg">
-        <a href="/dashboard/products/create" class="btn btn-primary mb-3">Create new product</a>
-        <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Harga</th>
-                    <th scope="col">Stok</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $product)
-                    <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $product->title }}</td>
-                        <td>Rp. {{ number_format($product->price, 2, ',', '.') }}</td>
-                        <td>{{ $product->stock }}</td>
-                        <td>{{ $product->category->category_name }}</td>
-                        <td class="align-items-center">
-                            <a href="/dashboard/products/{{ $product->slug }}" class="badge bg-info"> <span
-                                    data-feather="eye" class="align-text-bottom"></span></a>
-                            <a href="/dashboard/products/{{ $product->slug }}/edit" class="badge bg-warning"> <span
-                                    data-feather="edit" class="align-text-bottom"></span></a>
-                            <form action="/dashboard/products/{{ $product->slug }}" method="POST" class="d-inline">
-                                @method('delete')
-                                @csrf
-                                <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span
-                                        data-feather="trash-2"></span>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
+    <div class="container">
+        <div class="row ml-3 mb-4">
+            <div class="col-lg-4 px-0 mt-4">
+                <h1 class="container-fluid text-success tittle mt-5 mx-0 fs-2 px-2">{{ $title }}</h1>
+            </div>
+            <div class="col-lg-6 mt-5">
+                <div class="border-bottom border-3 border-success mt-5 px-0"></div>
+            </div>
+            <div class="col-2 px-0 mt-3 mb-3 px-4">
+                <div class="container px-2">
 
-            </tbody>
-        </table>
+                    <a href="/admin/product/create"
+                        class="btn w-100 btn-outline-success p-0 btn-lg border-2 btn-block col-lg-2 mt-5">
+                        <div class="row px-3">
+                            <div class="col-4 p-2 d-flex justify-content-center align-items-center">
+                                <h2 class="pb-0 mb-0"><i class="bi w-100 bi-lg bi-plus-circle-fill"></i></h2>
+                            </div>
+                            <div class="col-8 d-flex flex-column justify-content-center px-0">
+                                <p class="mb-0">Tambah Produk</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            @if (session()->has('createProduct'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('createProduct') }}
+                </div>
+            @elseif(session()->has('successDelete'))
+                <div class="alert alert-danger col-lg-4 text-center" role="alert">
+                    {{ session('successDelete') }}
+                </div>
+            @elseif(session()->has('successUpdate'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('successUpdate') }}
+                </div>
+            @elseif(session()->has('createTransaction'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('createTransaction') }}
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            @foreach ($products as $product)
+                <div class="col-md-3 mb-3">
+                    <div class="card rounded-4 mb-3 shadow border-0 overflow-hidden" style="">
+                        @if ($product->image)
+                            <div style="overflow:hidden; width: auto; max-height: 10em">
+                                <img src="{{ asset('img/' . $product->image) }}" alt="{{ $product->title }}"
+                                    class="img-fluid rounded-top-4">
+                            </div>
+                        @else
+                            <img src="https://source.unsplash.com/500x400?{{ $product->category->category_name }}"
+                                class="card-img-top rounded-top-4" alt="{{ $product->category->category_name }}"
+                                style="overflow: hidden; max-height: 10em">
+                        @endif
+
+                        <div class="card-body">
+                            <a href="/products?category={{ $product->category->slug }}"
+                                class="btn btn-outline-success mb-3 py-0">{{ $product->category->category_name }}</a>
+                            <a href="/products/{{ $product->slug }}" class="text-black text-decoration-none">
+                                <h5 class="card-title">{{ $product->title }}</h5>
+                            </a>
+                            <p class="card-text">Rp.
+                                {{ number_format($product->price, 0, ',', '.') }}
+                            </p>
+                            <p class="card-text">{{ Str::limit($product->excerpt, 65, '...') }}</p>
+                            <p class="card-text text-end"><small
+                                    class="text-body-secondary text-end">{{ $product->created_at->toFormattedDateString() }}</small>
+                            </p>
+                            <a href="/products/{{ $product->slug }}"
+                                class="btn btn-success btn-block w-100 rounded-4">Lihat
+                                produk</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@else
+    <div class="container">
+
+        <div class="row ml-3 mb-4">
+            <div class="col-lg-2 px-0 mt-4">
+                <h1 class="container-fluid text-success tittle mt-5 fs-2 px-2">{{ $title }}</h1>
+            </div>
+            <div class="col-lg-8 mt-5">
+                <div class="border-bottom border-3 border-success mt-5"></div>
+            </div>
+            <div class="col-2 px-0 mt-3 mb-3 px-4">
+                <div class="container px-2">
+                    <a href="/admin/product/create"
+                        class="btn w-100 btn-outline-success p-0 btn-lg border-2 btn-block col-lg-2 mt-5">
+                        <div class="row px-3">
+                            <div class="col-4 p-2 d-flex justify-content-center align-items-center">
+                                <h2 class="pb-0 mb-0"><i class="bi w-100 bi-lg bi-plus-circle-fill"></i></h2>
+                            </div>
+                            <div class="col-8 d-flex flex-column justify-content-center px-0">
+                                <p class="mb-0">Tambah Produk</p>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="container d-flex flex-column justify-content-center align-items-center opacity-50"
+                style="height: 30em">
+                <img src="/img/empty-cart.png" alt="" width="40%">
+                <h4 class="text-muted text-center">Belum produk dipasarkan</h4>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            @if (session()->has('createProduct'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('createProduct') }}
+                </div>
+            @elseif(session()->has('successDelete'))
+                <div class="alert alert-danger col-lg-4 text-center" role="alert">
+                    {{ session('successDelete') }}
+                </div>
+            @elseif(session()->has('successUpdate'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('successUpdate') }}
+                </div>
+            @elseif(session()->has('createTransaction'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('createTransaction') }}
+                </div>
+            @endif
+        </div>
+    </div>
+    @endif
+    <div class="d-flex justify-content-center">
+        {{ $products->links() }}
     </div>
 @endsection

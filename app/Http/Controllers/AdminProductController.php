@@ -20,9 +20,16 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        // return view('dashboard.products.index', [
-        //     'products' => Product::where('user_id', auth()->user()->id)->get(),
-        // ]);
+        $products = Product::where('user_id', auth()->user()->id)
+            ->latest()
+            ->paginate(8)
+            ->withQueryString();
+
+        return view('admin.products.index', [
+            'title' => 'Produk Saya',
+            'products' => $products,
+        ]);
+
     }
 
     /**
@@ -62,7 +69,7 @@ class AdminProductController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->description), 100);
 
         Product::create($validatedData);
 

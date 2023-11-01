@@ -17,7 +17,6 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="mb-3 d-flex flex-column">
-                    {{-- <h4 class="text-center mb-3">Gambar Produk</h4> --}}
                     {{-- Preview Image #1 --}}
                     <img src="" class="img-preview img-fluid mb-1 w-100 img-thumbnail" id="imagePreview"
                         style="display:block; height:25em ">
@@ -26,10 +25,7 @@
                         name="image" onchange="previewImage()" style="visibility: hidden">
                     <label for="image" class="btn btn-outline-success btn-block border-0 form-label">Unggah Foto
                         Produk</label>
-                    {{-- Preview Image #2 --}}
-                    {{-- <img class="img-preview img-fluid mb-3 col-sm-5"> --}}
-                    {{-- <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
-                        name="image" onchange="previewImage()"> --}}
+
                     @error('image')
                         <div class="invalid-feedback">
                             {{ $message }}
