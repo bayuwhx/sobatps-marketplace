@@ -50,6 +50,7 @@ Route::get('/categories', function () {
     ]);
 });
 
+// AUTHENTICATION
 // Halaman Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 // Login
@@ -57,34 +58,33 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 // Logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
+// REGISTRATION
 // Halaman Register
 Route::get('/register', [WebRegisterController::class, 'index'])->middleware('guest');
 // Registrasi User
 Route::post('/register', [WebRegisterController::class, 'store']);
 
+// PROFILE MANAGEMENT
 // Profile User
 Route::put('/profile/image/{user:username}', [ProfileController::class, 'updateImage'])->middleware('auth');
 // Profile User
 Route::resource('/profile', ProfileController::class)->scoped(['user' => 'username'])->middleware('auth');
 
-// Buat Produk Baru New
-Route::post('/admin/createproduct', [WebProductsController::class, 'createProduct'])->middleware('auth');
-// Update Produk New
-Route::put('/admin/updateproduct/{product:slug}', [WebProductsController::class, 'updateProduct'])->middleware('auth');
+// PRODUCT MANAGEMENT
 // checkSlug
 Route::get('/admin/product/checkSlug', [WebProductsController::class, 'checkSlug'])->middleware('auth');
 // Admin Controller
 Route::resource('/admin/product', AdminProductController::class)->scoped(['product' => 'slug'])->middleware('auth');
 
+// PRODUCT VIEW
 // Haaman semua produk
 Route::get('/products', [WebProductController::class, 'index']);
-
 // Halaman detail produk
 Route::get('products/{product:slug}', [WebProductController::class, 'show']);
 
+// TRANSACTION MANAGEMENT
 // Halaman pembelian
 Route::get('/purchase/product/{product:slug}', [WebProductController::class, 'purchase'])->middleware('auth');
-
 // Halaman Daftar pembelian buyer
 Route::get('/purchase/offers', [TransactionController::class, 'buyerOffers'])->middleware('auth');
 // Halaman Daftar pembelian buyer
@@ -94,36 +94,8 @@ Route::get('/purchase/records', [TransactionController::class, 'adminHistory'])-
 // Pembelian
 Route::resource('/purchase', TransactionController::class)->middleware('auth');
 
+// NOTIFICATION MANAGEMENT
 // Notifikasi Buyer
 Route::get('/notification', [NotificationController::class, 'buyerNotif'])->middleware('auth');
 // Notifikasi Seller
 Route::get('/notification/seller', [NotificationController::class, 'sellerNotif'])->middleware('auth');
-
-// // dashboard
-// Route::get('/dashboard', function () {
-//     return view('dashboard.index');
-// })->middleware('auth');
-
-// Route::get('/dashboard/products/checkSlug', [WebProductsController::class, 'checkSlug'])->middleware('auth');
-
-// Route::resource('/dashboard/products', WebProductsController::class)->scoped(['product' => 'slug'])->middleware('auth');
-
-// Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
-
-// Halaman produk per kategory
-// Route::get('/categories/{category:slug}', function (Category $category) {
-//     return view('products', [
-//         'title' => "Produk dengan kategori : $category->category_name",
-//         "active" => 'categories',
-//         'products' => $category->products->load('category', 'user'),
-//     ]);
-// });
-
-// Halama produk per producer
-// Route::get('/producer/{user:username}', function (User $user) {
-//     return view('products', [
-//         'title' => "Produk buatan produsen : $user->name",
-//         "active" => 'products',
-//         'products' => $user->products->load('category', 'user'),
-//     ]);
-// });
