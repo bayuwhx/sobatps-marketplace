@@ -84,7 +84,10 @@ class AdminProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.products.detail', [
+            "title" => "Detail produk",
+            "product" => $product,
+        ]);
     }
 
     /**

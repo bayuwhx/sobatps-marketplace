@@ -42,21 +42,27 @@
                         <div class="">
                             <p class="description">{{ $product->source }}</p>
                         </div>
-                        <h6 class="descript mb-3">Manfaat
+                        <h6 class="descript mb-3">Kegunaan
                         </h6>
                         <div class="">
                             <p class="description">{{ $product->function }}</p>
                         </div>
                         <div class="row d-flex justify-content-around mt-3">
-                            @auth
-                                <a href="/purchase/product/{{ $product->slug }}" class="btn btn-success w-100"><i
-                                        class="bi bi-bag-plus"></i>
-                                    | Beli Produk</a>
-                            @else
-                                <a href="/purchase/product/{{ $product->slug }}" class="btn btn-success w-100"><i
-                                        class="bi bi-bag-plus"></i>
-                                    | Beli Produk</a>
-                            @endauth
+                            <div class="col-6">
+                                <a href="/admin/product/{{ $product->slug }}/edit"
+                                    class="btn btn-warning btn-block w-100 btn-lg"><i class="bi bi-pencil-square"></i> |
+                                    Edit
+                                    Produk</a>
+                            </div>
+                            <div class="col-6">
+                                <form action="/admin/product/{{ $product->slug }}" method="POST" class="d-inline">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-danger btn-block w-100 btn-lg"
+                                        onclick="return confirm('Are you sure?')"><i class="bi bi-trash"></i> | Hapus
+                                        Produk
+                                    </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,13 +80,11 @@
                                         alt="{{ $product->user->name }}" class="img-fluid rounded-4">
                                 </div>
                             @endif
-
                             <div class="col">
                                 <h6 class="card-text">{{ $product->user->name }}</h6>
                                 <p class="card-text text-body-secondary"><small>{{ $product->user->city }}</small></p>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

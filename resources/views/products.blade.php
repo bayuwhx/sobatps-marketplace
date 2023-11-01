@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    <div class="container-fluid g-0 shadow border-0">
+    <div class="container-fluid g-0 border-0">
         @if ($products->count())
     </div>
     <div class="container">
@@ -117,8 +117,39 @@
         </div>
     </div>
 @else
-    <p class="text-center fs-4">Belum ada produk dipasarkan.</p>
-    <img src="/img/empty-cart.jpg" alt="">
+    <div class="container">
+        <div class="row ml-3">
+            <div class="col-lg-4 px-0 mt-4">
+                <h1 class="container-fluid text-success tittle mt-5 fs-2 px-2">{{ $title }}</h1>
+            </div>
+            <div class="col-lg-8 mt-5">
+                <div class="border-bottom border-3 border-success mt-5"></div>
+            </div>
+        </div>
+        <div class="container d-flex flex-column justify-content-center align-items-center opacity-50" style="height: 30em">
+            <img src="/img/empty-cart.png" alt="" width="30%">
+            <h4 class="text-muted text-center">Belum produk dipasarkan</h4>
+        </div>
+        <div class="row justify-content-center">
+            @if (session()->has('createProduct'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('createProduct') }}
+                </div>
+            @elseif(session()->has('successDelete'))
+                <div class="alert alert-danger col-lg-4 text-center" role="alert">
+                    {{ session('successDelete') }}
+                </div>
+            @elseif(session()->has('successUpdate'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('successUpdate') }}
+                </div>
+            @elseif(session()->has('createTransaction'))
+                <div class="alert alert-success col-lg-4 text-center" role="alert">
+                    {{ session('createTransaction') }}
+                </div>
+            @endif
+        </div>
+    </div>
     @endif
     <div class="d-flex justify-content-center">
         {{ $products->links() }}

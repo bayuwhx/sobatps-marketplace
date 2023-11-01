@@ -80,7 +80,7 @@
                             <p class="card-text text-end"><small
                                     class="text-body-secondary text-end">{{ $product->created_at->toFormattedDateString() }}</small>
                             </p>
-                            <a href="/products/{{ $product->slug }}"
+                            <a href="/admin/product/{{ $product->slug }}"
                                 class="btn btn-success btn-block w-100 rounded-4">Lihat
                                 produk</a>
                         </div>
