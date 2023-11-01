@@ -21,7 +21,7 @@
                     {{-- <label for="image" class="form-label">Gambar Produk</label> --}}
                     <input type="hidden" name="oldImage" value="{{ $product->image }}">
                     @if ($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}"
+                        <img src="{{ asset('img/' . $product->image) }}"
                             class="img-preview img-fluid col-sm-6 w-100 img-thumbnail" id="imagePreview"
                             style="display:block">
                     @else
@@ -127,7 +127,7 @@
                         </div>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-success btn-block btn-lg w-100">Update Produk</button>
+                <button type="submit" class="btn btn-success btn-block btn-lg w-100">Perbarui Produk</button>
 
             </div>
         </div>
@@ -142,7 +142,7 @@
         const slug = document.querySelector('#slug');
 
         title.addEventListener('change', function() {
-            fetch('/dashboard/products/checkSlug?title=' + title.value)
+            fetch('/admin/product/checkSlug?title=' + title.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
         });

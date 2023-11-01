@@ -35,7 +35,7 @@
             </div>
             <div class="col-lg-8">
                 <div class="mb-3">
-                    <label for="title" class="form-label @error('title') is-invalid @enderror">Title</label>
+                    <label for="title" class="form-label @error('title') is-invalid @enderror">Nama produk</label>
                     <input type="text" class="form-control rounded-4" id="title" name="title" required autofocus
                         value="{{ old('title') }}">
                     @error('title')
@@ -65,7 +65,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="price" class="form-label @error('price') is-invalid @enderror">Price</label>
+                    <label for="price" class="form-label @error('price') is-invalid @enderror">Harga</label>
                     <input type="number" class="form-control rounded-4" id="price" name="price" required
                         value="{{ old('price') }}">
                     @error('price')
@@ -75,7 +75,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="stock" class="form-label @error('stock') is-invalid @enderror">Stock</label>
+                    <label for="stock" class="form-label @error('stock') is-invalid @enderror">Stok produk</label>
                     <input type="number" class="form-control rounded-4" id="stock" name="stock" required
                         value="{{ old('stock') }}">
                     @error('stock')
@@ -85,7 +85,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="category" class="form-label">Category</label>
+                    <label for="category" class="form-label">Kategori produk</label>
                     <select class="form-select rounded-4" name="category_id">
                         @foreach ($categories as $category)
                             @if (old('category_id') == $category->id)
@@ -128,7 +128,6 @@
     <script>
         const title = document.querySelector('#title');
         const slug = document.querySelector('#slug');
-        console.log('#title');
 
         title.addEventListener('change', function() {
             fetch('/admin/product/checkSlug?title=' + title.value)
@@ -141,18 +140,6 @@
         })
 
         function previewImage() {
-            // const image = document.querySelector('#image');
-            // const imgPreview = document.querySelector('.img-preview');
-
-            // imgPreview.style.display = 'block';
-
-            // const oFReader = new FileReader();
-            // oFReader.readAsDataURL(image.files[0]);
-
-            // oFReader.onload = function(oFREvent) {
-            //     imgPreview.src = oFREvent.target.result;
-            // }
-
             imagePreview.src = URL.createObjectURL(event.target.files[0]);
         }
     </script>

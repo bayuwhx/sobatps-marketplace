@@ -49,9 +49,15 @@
                         </div>
                         <div class="row d-flex justify-content-around mt-3">
                             @auth
-                                <a href="/purchase/product/{{ $product->slug }}" class="btn btn-success w-100"><i
-                                        class="bi bi-bag-plus"></i>
-                                    | Beli Produk</a>
+                                @if (auth()->user()->isAdmin)
+                                    <a href="/purchase/product/{{ $product->slug }}" class="btn btn-success w-100 disabled"><i
+                                            class="bi bi-bag-plus"></i>
+                                        | Beli Produk</a>
+                                @else
+                                    <a href="/purchase/product/{{ $product->slug }}" class="btn btn-success w-100"><i
+                                            class="bi bi-bag-plus"></i>
+                                        | Beli Produk</a>
+                                @endif
                             @else
                                 <a href="/purchase/product/{{ $product->slug }}" class="btn btn-success w-100"><i
                                         class="bi bi-bag-plus"></i>

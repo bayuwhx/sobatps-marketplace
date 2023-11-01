@@ -59,6 +59,8 @@ class AdminProductController extends Controller
             'slug' => 'required|unique:products|max:255',
             'price' => 'required',
             'stock' => 'required',
+            'source' => 'required',
+            'function' => 'required',
             'image' => 'image|file|max:1024',
             'description' => 'required',
         ]);
@@ -119,6 +121,8 @@ class AdminProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required',
             'stock' => 'required',
+            'source' => 'required',
+            'function' => 'required',
             'image' => 'image|file|max:1024',
             'description' => 'required',
         ];
@@ -145,7 +149,7 @@ class AdminProductController extends Controller
         Product::where('id', $product->id)
             ->update($validatedData);
 
-        return redirect()->back()->with('successUpdate', 'Produk telah diperbarui');
+        return redirect('/products')->with('successUpdate', 'Produk telah diperbarui');
     }
 
     /**
@@ -164,7 +168,7 @@ class AdminProductController extends Controller
         }
         Product::destroy($product->id);
 
-        return redirect()->back()->with('successDelete', 'Product telah dihapus');
+        return redirect('/products')->with('successDelete', 'Produk telah dihapus');
     }
 
     public function checkSlug(Request $request)

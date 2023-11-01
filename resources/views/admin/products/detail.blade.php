@@ -59,7 +59,8 @@
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-danger btn-block w-100 btn-lg"
-                                        onclick="return confirm('Are you sure?')"><i class="bi bi-trash"></i> | Hapus
+                                        onclick="return confirm('Apakah anda yakin menghapus produk ini?')"><i
+                                            class="bi bi-trash"></i> | Hapus
                                         Produk
                                     </button>
                             </div>
