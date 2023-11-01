@@ -96,7 +96,7 @@ class ProfileController extends Controller
 
         User::where('id', Auth::user()->id)->update($validatedData);
 
-        return redirect('profile/' . Auth::user()->username)->with('successUpdate', 'Profile has been updated');
+        return redirect('profile/' . Auth::user()->username)->with('successUpdate', 'Data diri berhasil diperbarui');
     }
 
     public function updateImage(Request $request, User $user)
@@ -119,7 +119,7 @@ class ProfileController extends Controller
 
         User::where('id', Auth::user()->id)->update($validatedData);
 
-        return redirect('profile/' . Auth::user()->username)->with('successUpdate', 'Profile picture has been updated');
+        return redirect('profile/' . Auth::user()->username)->with('successUpdate', 'Foto profil berhasil diperbarui');
     }
 
     /**

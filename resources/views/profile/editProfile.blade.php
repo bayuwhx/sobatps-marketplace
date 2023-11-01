@@ -55,8 +55,8 @@
                     @else
                         <div class="col-lg d-flex justify-content-center mb-4 w-100">
                             <a href="/purchase/history" class="btn btn-outline-success w-100 btn-block border-0"><i
-                                    class="bi bi-receipt-cutoff"></i>Histori
-                                Pembelian</button></a>
+                                    class="bi bi-receipt-cutoff"></i> Histori
+                                Penawaran</button></a>
                         </div>
                     @endif
                     <div class="col-lg d-flex justify-content-center mt-2 pb-2">

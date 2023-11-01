@@ -42,7 +42,7 @@
                         <div class="">
                             <p class="description">{{ $product->source }}</p>
                         </div>
-                        <h6 class="descript mb-3">Manfaat
+                        <h6 class="descript mb-3">Kegunaan
                         </h6>
                         <div class="">
                             <p class="description">{{ $product->function }}</p>

@@ -74,8 +74,8 @@
                         @else
                             <div class="col-lg d-flex justify-content-center mb-4 w-100">
                                 <a href="/purchase/history" class="btn btn-outline-success w-100 btn-block border-0"><i
-                                        class="bi bi-receipt-cutoff"></i>Histori
-                                    Pembelian</button></a>
+                                        class="bi bi-receipt-cutoff"></i> Histori
+                                    Penawaran</button></a>
                             </div>
                         @endif
                         <div class="col-lg d-flex justify-content-center mt-2 pb-2">
@@ -94,90 +94,72 @@
             </div>
             <div class="col-md-8">
                 <div class="align-items-center pt-3 pb-2 mb-3 border-bottom border-3">
-                    <h1 class="h1 text-success font-weight-bold text-start">Profile</h1>
+                    <h1 class="h1 text-success font-weight-bold text-start">Profil</h1>
                 </div>
 
                 <br>
                 <div class="row border-bottom border-2 mb-3 pb-2">
                     <div class="col-4">
-                        <h4><strong>Nama:</strong></h4>
+                        <h4><strong>Nama</strong></h4>
                     </div>
                     <div class="col-8">
                         <h4>
-                            {{ $user->name ? $user->name : 'Update data untuk melengkapi bagian ini' }}
+                            : {{ $user->name ? $user->name : 'Update data untuk melengkapi bagian ini' }}
                         </h4>
                     </div>
                 </div>
                 <div class="row border-bottom border-2 mb-3 pb-2">
                     <div class="col-4">
-                        <h4><strong>Username:</strong></h4>
+                        <h4><strong>Username</strong></h4>
                     </div>
                     <div class="col-8">
                         <h4>
-                            {{ $user->name ? $user->username : 'Update data untuk melengkapi bagian ini' }}
+                            : {{ $user->name ? $user->username : 'Update data untuk melengkapi bagian ini' }}
                         </h4>
                     </div>
                 </div>
                 <div class="row border-bottom border-2 mb-3 pb-2">
                     <div class="col-4">
-                        <h4><strong>Email:</strong></h4>
+                        <h4><strong>Email</strong></h4>
                     </div>
                     <div class="col-8">
                         <h4>
-                            {{ $user->email ? $user->email : 'Update data untuk melengkapi bagian ini' }}
+                            : {{ $user->email ? $user->email : 'Update data untuk melengkapi bagian ini' }}
                         </h4>
                     </div>
                 </div>
                 <div class="row border-bottom border-2 mb-3 pb-2">
                     <div class="col-4">
-                        <h4><strong>Kota:</strong></h4>
+                        <h4><strong>Kota</strong></h4>
                     </div>
                     <div class="col-8">
                         <h4>
-                            {{ $user->city ? $user->city : 'Update data untuk melengkapi bagian ini' }}
+                            : {{ $user->city ? $user->city : 'Update data untuk melengkapi bagian ini' }}
                         </h4>
                     </div>
                 </div>
                 <div class="row border-bottom border-2 mb-3 pb-2">
                     <div class="col-4">
-                        <h4><strong>Alamat:</strong></h4>
+                        <h4><strong>Alamat</strong></h4>
                     </div>
                     <div class="col-8">
                         <h4>
-                            {{ $user->address ? $user->address : 'Update data untuk melengkapi bagian ini' }}
+                            : {{ $user->address ? $user->address : 'Update data untuk melengkapi bagian ini' }}
                         </h4>
                     </div>
                 </div>
                 <div class="row border-bottom border-2 mb-3 pb-2">
                     <div class="col-4">
-                        <h4><strong>Nomor Telepon:</strong></h4>
+                        <h4><strong>Nomor Telepon</strong></h4>
                     </div>
                     <div class="col-8">
                         <h4>
-                            {{ $user->phone ? $user->phone : 'Update data untuk melengkapi bagian ini' }}
+                            : {{ $user->phone ? $user->phone : 'Update data untuk melengkapi bagian ini' }}
                         </h4>
                     </div>
                 </div>
-
-                {{-- <h4 class="border-bottom border-2 mb-3 pb-3"><strong>Username:</strong>
-                    {{ $user->username ? $user->username : 'Update data untuk melengkapi bagian ini' }}</h4>
-                <h4 class="border-bottom border-2 mb-3 pb-3"><strong>Email:</strong>
-                    {{ $user->email ? $user->email : 'Update data untuk melengkapi bagian ini' }}</h4>
-                <h4 class="border-bottom border-2 mb-3 pb-3"><strong>Kota:</strong>
-                    {{ $user->city ? $user->city : 'Update data untuk melengkapi bagian ini' }}</h4>
-                <h4 class="border-bottom border-2 mb-3 pb-3"><strong>Alamat:</strong>
-                    {{ $user->address ? $user->address : 'Update data untuk melengkapi bagian ini' }}</h4>
-                <h4 class="border-bottom border-2 mb-3 pb-3"><strong>Nomor Telepon:</strong>
-                    {{ $user->phone ? $user->phone : 'Update data untuk melengkapi bagian ini' }}
-                </h4> --}}
 
             </div>
-
-            {{-- <a href="/products" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i> |
-                    Kembali</a>
-                <a href="/profile/{{ $user->username }}/edit" class="btn btn-warning"><i class="bi bi-pencil-square"></i> |
-                    Ubah profil</a> --}}
-
 
         </div>
         <script>

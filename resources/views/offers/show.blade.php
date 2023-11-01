@@ -6,8 +6,8 @@
             <div class="col-lg-6 p-4">
                 @if ($transaction->product->image)
                     <div style="" class="rounded-3 mb-lg-0 mb-sm-3">
-                        <img src="{{ asset('storage/' . $transaction->product->image) }}"
-                            alt="{{ $transaction->product->title }}" class="img-fluid rounded-4">
+                        <img src="{{ asset('img/' . $transaction->product->image) }}" alt="{{ $transaction->product->title }}"
+                            class="img-fluid rounded-4">
                     </div>
                 @else
                     <div class="rounded-3 mb-lg-0 mb-sm-3">
@@ -15,13 +15,6 @@
                             alt="{{ $transaction->product->title }}" class="img-fluid rounded-4">
                     </div>
                 @endif
-                {{-- @if (auth()->user()->isAdmin)
-                    <a href="/purchase" class="btn btn-success mt-3"><i class="bi bi-arrow-left-circle"></i> |
-                        Kembali</a>
-                @else
-                    <a href="/purchase/offers" class="btn btn-success mt-3"><i class="bi bi-arrow-left-circle"></i> |
-                        Kembali</a>
-                @endif --}}
 
             </div>
             <div class="col-lg-6 m-auto p-4">
@@ -47,52 +40,69 @@
                         <div class="">
                             <p class="description">{!! $transaction->product->description !!}</p>
                         </div>
-
-                        {{-- <div class="row d-flex justify-content-around mt-3">
-                            @auth
-                                @if (auth()->user()->isAdmin)
-                                    <a href="/products" class="btn btn-success"><i class="bi bi-arrow-left-circle"></i> |
-                                        Kembali</a>
-                                    <div class="col-6">
-                                        <a href="/admin/product/{{ $transaction->product->slug }}/edit"
-                                            class="btn btn-warning btn-block w-100 btn-lg"><i class="bi bi-pencil-square"></i> |
-                                            Edit
-                                            Produk</a>
-                                    </div>
-                                    <div class="col-6">
-                                        <form action="/admin/product/{{ $transaction->product->slug }}" method="POST"
-                                            class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="btn btn-danger btn-block w-100 btn-lg"
-                                                onclick="return confirm('Are you sure?')"><i class="bi bi-trash"></i> | Hapus
-                                                Produk
-                                            </button>
-                                    </div>
-                                @else
-                                    <a href="/product/purchase/{{ $transaction->product->slug }}"
-                                        class="btn btn-success w-100"><i class="bi bi-bag-plus"></i>
-                                        | Beli Produk</a>
-                                @endif
-                            @else
-                                <a href="/purchase/{{ $transaction->product->slug }}" class="btn btn-success w-100"><i
-                                        class="bi bi-bag-plus"></i>
-                                    | Beli Produk</a>
-                            @endauth
-                        </div> --}}
+                        <h6 class="descript mb-3">Sumber Produk
+                        </h6>
+                        <div class="">
+                            <p class="description">{{ $transaction->product->source }}</p>
+                        </div>
+                        <h6 class="descript mb-3">Kegunaan
+                        </h6>
+                        <div class="">
+                            <p class="description">{{ $transaction->product->function }}</p>
+                        </div>
                     </div>
                 </div>
 
                 @if (auth()->user()->isAdmin)
                     <div class="card mb-3 border-0 shadow-lg rounded-4">
-                        <div class="card-body">
-                            <h5 class="mb-0">Pembeli: {{ $transaction->buyer->name }}</h5>
+                        <div class="card-body p-3">
+                            <div class="row">
+                                @if ($transaction->buyer->image)
+                                    <div class="col-2">
+                                        <img src="{{ asset('img/' . $transaction->buyer->image) }}"
+                                            alt="{{ $transaction->buyer->name }}" class="img-fluid rounded-4">
+                                    </div>
+                                @else
+                                    <div class="col-2">
+                                        <img src="https://source.unsplash.com/1200x800?profile"
+                                            alt="{{ $transaction->buyer->name }}" class="img-fluid rounded-4">
+                                    </div>
+                                @endif
+
+                                <div class="col">
+                                    <h6 class="card-text">{{ $transaction->buyer->name }}</h6>
+                                    <p class="card-text text-body-secondary">
+                                        <small>{{ $transaction->buyer->city }}</small>
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 @else
                     <div class="card mb-3 border-0 shadow-lg rounded-4">
-                        <div class="card-body">
-                            <h5 class="mb-0">Penjual: {{ $transaction->seller->name }}</h5>
+                        <div class="card-body p-3">
+                            <div class="row">
+                                @if ($transaction->seller->image)
+                                    <div class="col-2">
+                                        <img src="{{ asset('img/' . $transaction->seller->image) }}"
+                                            alt="{{ $transaction->seller->name }}" class="img-fluid rounded-4">
+                                    </div>
+                                @else
+                                    <div class="col-2">
+                                        <img src="https://source.unsplash.com/1200x800?profile"
+                                            alt="{{ $transaction->seller->name }}" class="img-fluid rounded-4">
+                                    </div>
+                                @endif
+
+                                <div class="col">
+                                    <h6 class="card-text">{{ $transaction->seller->name }}</h6>
+                                    <p class="card-text text-body-secondary">
+                                        <small>{{ $transaction->seller->city }}</small>
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 @endif
@@ -126,7 +136,6 @@
                                             name="price"value="{{ $transaction->price }}" readonly>
                                     </div>
                                 </div>
-
                                 <div class="col-1">
                                     <span id="price" class="form-text">
                                         /Item
@@ -146,14 +155,14 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <button type="sumbit"
-                                                class="btn btn-success btn-block w-100 font-weight-bold mt-3" name="status"
-                                                id="status" value="accepted">Terima
+                                                class="btn btn-success btn-block w-100 font-weight-bold mt-3"
+                                                name="status" id="status" value="accepted">Terima
                                                 Tawaran</button>
                                         </div>
                                         <div class="col-6">
                                             <button type="sumbit"
-                                                class="btn btn-danger btn-block w-100 font-weight-bold mt-3" name="status"
-                                                id="status" value="rejected">Tolak
+                                                class="btn btn-danger btn-block w-100 font-weight-bold mt-3"
+                                                name="status" id="status" value="rejected">Tolak
                                                 Tawaran</button>
                                         </div>
                                     </div>
@@ -166,7 +175,7 @@
                                 <h4>Tawaranmu <span class="text-warning">menunggu</span> konfirmasi penjual, harap
                                     tunggu...
                                 </h4>
-                            @elseif ($transaction->status == 'accept')
+                            @elseif ($transaction->status == 'accepted')
                                 <h4>Selamat! Tawaranmu <span class="text-success">diterima</span>, silahkan lanjutkan
                                     transaksi</h4>
                                 <!-- Button trigger modal -->
@@ -219,18 +228,13 @@
                                                                     Transaksi</button>
                                                             </div>
                                                         </div>
-
-
-
-
-
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @elseif ($transaction->status == 'reject')
+                            @elseif ($transaction->status == 'rejected')
                                 <h4>Maaf, tawaran yang kamu ajukan <span class="text-danger">ditolak</span> admin</h4>
                             @endif
                         @endif

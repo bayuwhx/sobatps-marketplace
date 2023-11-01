@@ -20,7 +20,7 @@
                                     <div class="row">
                                         <div class="col-3">
                                             @if ($transaction->product->image)
-                                                <img src="{{ asset('storage/' . $transaction->product->image) }}"
+                                                <img src="{{ asset('img/' . $transaction->product->image) }}"
                                                     alt="Product Image" class="img-fluid h-100 rounded-3"
                                                     style="overflow: hidden">
                                             @else
@@ -76,7 +76,7 @@
                                     <div class="row">
                                         <div class="col-3">
                                             @if ($transaction->product->image)
-                                                <img src="{{ asset('storage/' . $transaction->product->image) }}"
+                                                <img src="{{ asset('img/' . $transaction->product->image) }}"
                                                     alt="Product Image" class="img-fluid h-100 rounded-3"
                                                     style="overflow: hidden">
                                             @else
@@ -131,7 +131,7 @@
                                     <div class="row">
                                         <div class="col-3">
                                             @if ($transaction->product->image)
-                                                <img src="{{ asset('storage/' . $transaction->product->image) }}"
+                                                <img src="{{ asset('img/' . $transaction->product->image) }}"
                                                     alt="Product Image" class="img-fluid h-100 rounded-3"
                                                     style="overflow: hidden">
                                             @else
@@ -161,15 +161,9 @@
                                             <div class="row">
                                                 <div
                                                     class="col-9 border border-top-0 border-bottom-0 border-start-0 mb-0 pb-0">
-                                                    {{-- <p class="description mb-0"
-                                                        style="overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4;">
-                                                        {!! $transaction->product->excerpt !!}</p> --}}
                                                     {{ Str::limit($transaction->product->excerpt, 150, '...') }}</p>
                                                 </div>
                                                 <div class="col-3 d-flex flex-column align-self-end">
-                                                    {{-- <p>Harga : Rp {{ number_format($transaction->price, 0, ',', '.') }}
-                                                    /Item
-                                                </p> --}}
                                                     <p class="mb-0">Total Harga: </p>
                                                     <p class="mb-0">Rp
                                                         {{ number_format($transaction->quantities * $transaction->price, 0, ',', '.') }}

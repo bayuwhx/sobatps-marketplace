@@ -31,6 +31,6 @@ class WebRegisterController extends Controller
 
         // $request->session()->flash('successRegist', 'Registration Successfull! Please Login');
 
-        return redirect('/login')->with('successRegist', 'Registration Successfull! Please Login');
+        return redirect('/login')->with('successRegist', 'Registrasi berhasil, silahkan masuk!');
     }
 }

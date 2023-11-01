@@ -37,7 +37,7 @@
                         <div class="card rounded-4 mb-3 shadow border-0 overflow-hidden" style="">
                             @if ($transaction->product->image)
                                 <div style="overflow:hidden; width: auto; max-height: 10em">
-                                    <img src="{{ asset('storage/' . $transaction->product->image) }}"
+                                    <img src="{{ asset('img/' . $transaction->product->image) }}"
                                         alt="{{ $transaction->product->title }}" class="img-fluid rounded-top-4">
                                 </div>
                             @else

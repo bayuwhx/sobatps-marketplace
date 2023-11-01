@@ -21,7 +21,7 @@
                             <div class="card rounded-4 mb-3 shadow border-0 overflow-hidden" style="">
                                 @if ($transaction->product->image)
                                     <div style="overflow:hidden; width: auto; max-height: 10em">
-                                        <img src="{{ asset('storage/' . $transaction->product->image) }}"
+                                        <img src="{{ asset('img/' . $transaction->product->image) }}"
                                             alt="{{ $transaction->product->title }}" class="img-fluid rounded-top-4">
                                     </div>
                                 @else
@@ -48,7 +48,6 @@
                                     <h6 class="card-text text-success">Di tawar Rp.
                                         {{ number_format($transaction->price, 2, ',', '.') }}
                                     </h6>
-                                    {{-- <p class="card-text">Jumlah beli {{ $transaction->quantities }} item</p> --}}
                                     <p class="card-text text-warning"><strong>Penawar: </strong><span class="text-black">
                                             {{ $transaction->buyer->name }}</span></p>
                                     <p class="card-text text-end"><small
@@ -77,7 +76,6 @@
                 <img src="/img/empty-cart.png" alt="" width="30%">
                 <h4 class="text-muted text-center">Tidak ada produk yang ditawar</h4>
             </div>
-            {{-- <p class="text-center fs-4">No post found.</p> --}}
         @endif
         <div class="d-flex justify-content-center">
             {{ $transactions->links() }}

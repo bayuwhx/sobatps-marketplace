@@ -73,7 +73,7 @@ class AdminProductController extends Controller
 
         Product::create($validatedData);
 
-        return redirect('/products')->with('createProduct', 'New product has been posted');
+        return redirect('/products')->with('createProduct', 'Produk baru berhasil dipasarkan');
     }
 
     /**
@@ -145,7 +145,7 @@ class AdminProductController extends Controller
         Product::where('id', $product->id)
             ->update($validatedData);
 
-        return redirect('/products')->with('successUpdate', 'Product has been updated');
+        return redirect()->back()->with('successUpdate', 'Produk telah diperbarui');
     }
 
     /**
@@ -164,7 +164,7 @@ class AdminProductController extends Controller
         }
         Product::destroy($product->id);
 
-        return redirect('products')->with('successDelete', 'Product has been deleted');
+        return redirect()->back()->with('successDelete', 'Product telah dihapus');
     }
 
     public function checkSlug(Request $request)

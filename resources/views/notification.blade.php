@@ -101,7 +101,7 @@
                                             </div>
                                             <div class="col-lg-2">
                                                 @if ($notification->product->image)
-                                                    <img src="{{ asset('storage/' . $notification->product->image) }}"
+                                                    <img src="{{ asset('img/' . $notification->product->image) }}"
                                                         alt="Product Image" class="img-fluid h-100 w-100 rounded-3"
                                                         style="overflow: hidden">
                                                 @else
@@ -209,7 +209,7 @@
                                             </div>
                                             <div class="col-lg-2">
                                                 @if ($notification->product->image)
-                                                    <img src="{{ asset('storage/' . $notification->product->image) }}"
+                                                    <img src="{{ asset('img/' . $notification->product->image) }}"
                                                         alt="Product Image"
                                                         class="img-fluid img-fluid h-100 w-100 rounded-3"
                                                         style="overflow: hidden">
