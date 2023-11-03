@@ -61,10 +61,7 @@
                                 class="btn btn-outline-success w-100 btn-block border-0"><i class="bi bi-pencil-square"></i>
                                 Ubah Data Diri</a>
                         </div>
-                        <div class="col-lg d-flex justify-content-center mb-1">
-                            <button type="button" class="btn btn-outline-success w-100 btn-block border-0">Ubah
-                                Password</button>
-                        </div>
+
                         @if (auth()->user()->isAdmin)
                             <div class="col-lg d-flex justify-content-center mb-5 w-100">
                                 <a href="/purchase/records" class="btn btn-outline-success w-100 btn-block border-0"><i
