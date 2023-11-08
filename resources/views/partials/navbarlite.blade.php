@@ -33,6 +33,15 @@
             </ul>
             <ul class="navbar-nav sm-auto">
                 @auth
+                    <li class="nav-item">
+                        @if (auth()->user()->isAdmin)
+                            <a class="nav-link {{ Request::is('notification*') ? 'active' : '' }}"
+                                href="/notification/seller"><i class="bi bi-bell"></i></a>
+                        @else
+                            <a class="nav-link {{ Request::is('notification*') ? 'active' : '' }}" href="/notification"><i
+                                    class="bi bi-bell"></i></a>
+                        @endif
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
