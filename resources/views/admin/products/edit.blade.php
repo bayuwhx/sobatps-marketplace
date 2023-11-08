@@ -6,7 +6,7 @@
         <div class="col-lg-8">
             <div
                 class="d-flex justify-content-between text-success flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-4 border-bottom">
-                <h1 class="h2">Buat produk baru</h1>
+                <h1 class="h2">Ubah produk</h1>
             </div>
         </div>
     </div>

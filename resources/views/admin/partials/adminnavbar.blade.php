@@ -13,6 +13,13 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('products*') ? 'active' : '' }}" href="/products">Produk</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('purchase*') ? 'active' : '' }}" href="/purchase">Pesanan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('admin*') ? 'active' : '' }}" href="/admin/product">Produk
+                        Saya</a>
+                </li>
             </ul>
             <ul class="navbar-nav sm-auto">
                 @auth

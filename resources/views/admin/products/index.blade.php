@@ -6,10 +6,10 @@
     </div>
     <div class="container">
         <div class="row ml-3 mb-4">
-            <div class="col-lg-4 px-0 mt-4">
+            <div class="col-lg-2 px-0 mt-4">
                 <h1 class="container-fluid text-success tittle mt-5 mx-0 fs-2 px-2">{{ $title }}</h1>
             </div>
-            <div class="col-lg-6 mt-5">
+            <div class="col-lg-8 mt-5">
                 <div class="border-bottom border-3 border-success mt-5 px-0"></div>
             </div>
             <div class="col-2 px-0 mt-3 mb-3 px-4">

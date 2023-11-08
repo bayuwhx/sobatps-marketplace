@@ -88,7 +88,7 @@
             </div>
         </div>
         <h1 class="text-center mt-5">Kenapa harus menggunakan</h1>
-        <h1 class="text-center mb-5">SOBAT-<span class="text-success">PS</span> E-Bussines</h1>
+        <h1 class="text-center mb-5">SOBAT-<span class="text-success">PS</span> Marketplace ?</h1>
 
         <h4 class="text-center" style="color: #959595">Masih ragu pake aplikasi ini sobat?</h4>
         <h4 class="text-center mb-5" style="color: #959595">ini nih keunggulan yang kami punya!</h4>
@@ -143,7 +143,7 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
                                     aria-controls="panelsStayOpen-collapseOne">
-                                    Accordion Item #1
+                                    Produk apa saja yang dipasarkan dalam aplikasi ini?
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
@@ -167,7 +167,7 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
                                     aria-controls="panelsStayOpen-collapseTwo">
-                                    Accordion Item #2
+                                    Bagaimana alur transaksi dengan aplikasi ini ?
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
@@ -191,7 +191,7 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
                                     aria-controls="panelsStayOpen-collapseThree">
-                                    Accordion Item #3
+                                    Apakah produk yang dipasarkan asli dan berkualitas ?
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
