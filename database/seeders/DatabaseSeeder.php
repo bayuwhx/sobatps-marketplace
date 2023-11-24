@@ -26,8 +26,6 @@ class DatabaseSeeder extends Seeder
             'isAdmin' => true,
             'city' => 'Malang',
             'phone' => '081111111111',
-            // 'image' => 'https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/UserImages%2Fadmin1.jpg?alt=media&token=73219a93-0e67-4a40-8662-de4e4dc2c6b3',
-            // 'image' => public_path() . "\UserImages\admin1.jpg",
             'image' => "profile-images/admin1.jpg",
         ]);
 
@@ -40,8 +38,6 @@ class DatabaseSeeder extends Seeder
             'isAdmin' => true,
             'city' => 'Makassar',
             'phone' => '082222222222',
-            // 'image' => 'https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/UserImages%2Fadmin2.jpg?alt=media&token=915f7b91-0ccd-4dc7-adc3-ff613c06a85e',
-            // 'image' => public_path() . "\UserImages\admin2.jpg",
             'image' => "profile-images/admin2.jpg",
         ]);
 
@@ -55,8 +51,6 @@ class DatabaseSeeder extends Seeder
             'city' => 'Malang',
             'phone' => '081234567890',
         ]);
-
-        // \App\Models\User::factory(5)->create();
 
         Category::create([
             'category_name' => "Hasil Hutan Bukan Kayu",
@@ -78,8 +72,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 11111,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct1.jpg?alt=media&token=baae9814-fae2-4a5f-9e50-bf6dc8777685",
-            // 'image' => public_path() . "\ProductImages\product1.jpg",
             'image' => "product-images/product1.jpg",
         ]);
 
@@ -93,8 +85,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 22222,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct2.jpg?alt=media&token=27f085ee-f137-4131-92a8-30aced13c5d3",
-            // 'image' => public_path() . "\ProductImages\product2.jpg",
             'image' => "product-images/product2.jpg",
         ]);
 
@@ -108,8 +98,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 33333,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct3.jpg?alt=media&token=f2fdbc3a-855f-4cad-a583-06cf5934fb07",
-            // 'image' => public_path() . "\ProductImages\product3.jpg",
             'image' => "product-images/product3.jpg",
         ]);
 
@@ -123,8 +111,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 44444,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct4.jpg?alt=media&token=f68ded8d-1b86-443b-9a5a-a608f09d080c",
-            // 'image' => public_path() . "\ProductImages\product4.jpg",
             'image' => "product-images/product4.jpg",
         ]);
 
@@ -138,8 +124,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 55555,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct5.jpg?alt=media&token=9056cd45-ac71-4b59-aa1c-09913aae4347",
-            // 'image' => public_path() . "\ProductImages\product5.jpg",
             'image' => "product-images/product5.jpg",
         ]);
 
@@ -153,8 +137,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 66666,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct6.jpg?alt=media&token=67f0f6a5-aff6-4bcd-88a3-1599e991a0c9",
-            // 'image' => public_path() . "\ProductImages\product6.jpg",
             'image' => "product-images/product6.jpg",
         ]);
 
@@ -168,8 +150,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 77777,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct7.jpg?alt=media&token=34a4a586-343b-42f7-9e12-c2b2a3304180",
-            // 'image' => public_path() . "\ProductImages\product7.jpg",
             'image' => "product-images/product7.jpg",
         ]);
 
@@ -183,8 +163,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 88888,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct8.jpg?alt=media&token=461cd3d5-abeb-4f3d-bcfb-d5db1f0b492f",
-            // 'image' => public_path() . "\ProductImages\product8.jpg",
             'image' => "product-images/product8.jpg",
         ]);
 
@@ -198,8 +176,6 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 99999,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct9.jpg?alt=media&token=6f06bf78-7c40-4458-bc11-433c90193160",
-            // 'image' => public_path() . "\ProductImages\product9.jpg",
             'image' => "product-images/product9.jpg",
         ]);
 
@@ -213,11 +189,7 @@ class DatabaseSeeder extends Seeder
             'stock' => 5,
             'published_at' => date("Y-m-d H:i:s"),
             'price' => 100000,
-            // 'image' => "https://firebasestorage.googleapis.com/v0/b/firestore-cff6b.appspot.com/o/ProductImages%2Fproduct10.jpg?alt=media&token=c5e58b36-dc72-422a-bcd3-831181ba18fe",
-            // 'image' => public_path() . "\ProductImages\product10.jpg",
             'image' => "product-images/product10.jpg",
         ]);
-
-        // \App\Models\Product::factory(20)->create();
     }
 }

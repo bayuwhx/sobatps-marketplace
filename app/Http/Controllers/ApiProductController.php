@@ -14,7 +14,7 @@ class ApiProductController extends Controller
     public function indexCategory()
     {
         $category = Category::all();
-        return response()->json($category);
+        return response()->json($category, 200);
     }
 
     /**
@@ -40,7 +40,7 @@ class ApiProductController extends Controller
             $products[$key]['category_id'] = json_decode($val['category_id']);
         }
 
-        return response()->json($products);
+        return response()->json($products, 200);
     }
 
     /**
@@ -83,28 +83,10 @@ class ApiProductController extends Controller
         if ($request->hasFile('image')) {
             $filename = $request->file('image')->store('product-images', 'public_uploads');
         }
-
-        //!! Firebase
-        // $imageData = $request->input('image');
-        // // $base64Image = substr($imageData, strpos($imageData, ',') + 1);
-        // $imageData = base64_decode($imageData);
-        // $fileName = date('Ymdhis') . $product->id . '.jpg';
-        // $firebaseStoragePath = "ProductImages/{$fileName}";
-        // Storage::disk('local')->put("public/ProductImages/{$fileName}", $imageData);
-        // $uploadedFile = fopen(storage_path("app/public/ProductImages/{$fileName}"), 'r');
-        // app('firebase.storage')->getBucket()->upload($uploadedFile, ['name' => $firebaseStoragePath]);
-        // Storage::disk('local')->delete("public/ProductImages/{$fileName}");
-        // $expiresAt = new DateTime('2030-01-01');
-        // $imageReference = app('firebase.storage')->getBucket()->object($firebaseStoragePath);
-        // $imageUrl = $imageReference->signedUrl($expiresAt);
-        // $product->image = $imageUrl;
-        //!! Firebase
-
-        // $product->image = 'storage/' . $filename;
         $product->image = $filename;
         $product->save();
 
-        return response()->json($product);
+        return response()->json($product, 200);
     }
 
     /**
@@ -117,17 +99,17 @@ class ApiProductController extends Controller
     {
         $products = Product::find($id);
 
-        return response()->json(new ProductShow($products));
+        if ($products === null) {
+            return response()->json([
+                "success" => false,
+                "message" => "Product not found.",
+            ], 404);
+        }
+
+        return response()->json(new ProductShow($products), 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function updateProduct(Request $request, $id)
     {
         $validator = Validator::make(request()->all(), [
             'category_id' => 'required',
@@ -147,6 +129,13 @@ class ApiProductController extends Controller
         $user = auth()->guard('api')->user();
         $product = Product::find($id);
 
+        if ($product === null) {
+            return response()->json([
+                "success" => false,
+                "message" => "Product not found.",
+            ], 404);
+        }
+
         if ($user->id != $product->user_id) {
             return response()->json([
                 "success" => false,
@@ -160,35 +149,8 @@ class ApiProductController extends Controller
                 if (File::exists($destination)) {
                     File::delete($destination);
                 }
-
-                //!! Firebase
-                // $oldData = $product->image;
-                // $oldUri = explode('/', $oldData);
-                // $filename = explode('?', $oldUri[5])[0];
-                // $old_firebase_storage_path = $oldUri[4] . '/' . $filename;
-                // app('firebase.storage')->getBucket()->object($old_firebase_storage_path)->delete();
-                //!! Firebase
             }
-
             $filename = $request->file('image')->store('product-images', 'public_uploads');
-
-            //!! Firebase
-            // $imageData = $request->input('image');
-            // // $base64Image = substr($imageData, strpos($imageData, ',') + 1);
-            // $imageData = base64_decode($imageData);
-            // $fileName = date('Ymdhis') . $product->id . '.jpg';
-            // $firebaseStoragePath = "ProductImages/{$fileName}";
-            // Storage::disk('local')->put("public/ProductImages/{$fileName}", $imageData);
-            // $uploadedFile = fopen(storage_path("app/public/ProductImages/{$fileName}"), 'r');
-            // app('firebase.storage')->getBucket()->upload($uploadedFile, title'name' => $firebaseStoragePath]);
-            // Storage::disk('local')->delete("public/ProductImages/{$fileName}");
-            // $expiresAt = new DateTime('2030-01-01');
-            // $imageReference = app('firebase.storage')->getBucket()->object($firebaseStoragePath);
-            // $imageUrl = $imageReference->signedUrl($expiresAt);
-            // $product->image = $imageUrl;
-            //!! Firebase
-
-            // $product->image = 'storage/' . $filename;
             $product->image = $filename;
         }
 
@@ -202,7 +164,7 @@ class ApiProductController extends Controller
         $product->isSold = $request->isSold;
         $product->save();
 
-        return response()->json($product);
+        return response()->json($product, 200);
     }
 
     /**
@@ -216,6 +178,13 @@ class ApiProductController extends Controller
         $user = auth()->guard('api')->user();
         $product = Product::find($id);
 
+        if ($product === null) {
+            return response()->json([
+                "success" => false,
+                "message" => "Product not found.",
+            ], 404);
+        }
+
         if ($user->id != $product->user_id) {
             return response()->json([
                 "success" => false,
@@ -228,18 +197,13 @@ class ApiProductController extends Controller
             if (File::exists($destination)) {
                 File::delete($destination);
             }
-
-            //!! Firebase
-            // $oldData = $product->image;
-            // $oldUri = explode('/', $oldData);
-            // $filename = explode('?', $oldUri[5])[0];
-            // $old_firebase_storage_path = $oldUri[4] . '/' . $filename;
-            // app('firebase.storage')->getBucket()->object($old_firebase_storage_path)->delete();
-            //!! Firebase
         }
 
         $product->delete();
 
-        return response()->json($product);
+        return response()->json([
+            "success" => true,
+            "message" => "Successfully deleted",
+        ], 200);
     }
 }

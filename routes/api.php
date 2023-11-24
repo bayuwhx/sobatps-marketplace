@@ -21,7 +21,6 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::post('register', [ApiAuthController::class, 'register']);
     Route::post('login', [ApiAuthController::class, 'login']);
     Route::post('logout', [ApiAuthController::class, 'logout']);
-    // Route::post('refresh', [ApiAuthController::class, 'refresh']); //!! DELETED
     Route::get('user', [ApiAuthController::class, 'user']); //!! ADMIN
 
     // Update Profile
@@ -30,6 +29,9 @@ Route::group(['middleware' => 'api'], function ($router) {
 
     // List Category
     Route::get('category', [ApiProductController::class, 'indexCategory']);
+
+    // Update Product
+    Route::post('product/{id}', [ApiProductController::class, 'updateProduct']); //!!ADMIN
 
     // Transaction
     Route::get('user/transaction/all', [ApiTransactionController::class, 'indexAll']); //!! ADMIN

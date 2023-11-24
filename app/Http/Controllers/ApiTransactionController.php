@@ -22,7 +22,7 @@ class ApiTransactionController extends Controller
     public function indexAll()
     {
         $transaction = Transaction::all();
-        return response()->json($transaction);
+        return response()->json($transaction, 200);
     }
 
     public function indexCart()
@@ -46,10 +46,32 @@ class ApiTransactionController extends Controller
     {
         $user = auth()->guard('api')->user();
         $user = User::find($user->id);
+        $cart = Transaction::find($id);
 
-        $cart = Transaction::with('product', 'seller')->find($id);
+        if ($cart === null) {
+            return response()->json([
+                "success" => false,
+                "message" => "Cart not found.",
+            ], 404);
+        }
 
-        return response()->json(new CartShow($cart));
+        if ($user->id != $cart->buyer_id) {
+            return response()->json([
+                "success" => false,
+                "message" => "You're not the owner of the cart!",
+            ], 403);
+        }
+
+        $cart = Transaction::with('product', 'seller')
+            ->where('id', $id)
+            ->where('buyer_id', $user->id)
+            ->where(function ($query) {
+                $query->where('status', "pending")
+                    ->orWhere('status', "accepted");
+            })
+            ->first();
+
+        return response()->json(new CartShow($cart), 200);
     }
 
     public function indexHistory()
@@ -63,7 +85,7 @@ class ApiTransactionController extends Controller
             ->latest()
             ->get();
 
-        return response()->json($history);
+        return response()->json($history, 200);
     }
 
     public function indexNotification()
@@ -77,19 +99,23 @@ class ApiTransactionController extends Controller
                 $query->where('status', "rejected")
                     ->orWhere('status', "accepted");
             })
-        // ('status', "rejected")
-        // ->orWhere('status', "accepted")
             ->latest()
             ->get();
 
-        return response()->json($notification);
+        return response()->json($notification, 200);
     }
 
     public function readNotification($id)
     {
-
         $user = auth()->guard('api')->user();
         $notification = Transaction::find($id);
+
+        if ($notification === null) {
+            return response()->json([
+                "success" => false,
+                "message" => "Notification not found.",
+            ], 404);
+        }
 
         if ($user->id != $notification->buyer_id) {
             return response()->json([
@@ -101,7 +127,7 @@ class ApiTransactionController extends Controller
         $notification->isRead = true;
         $notification->save();
 
-        return response()->json($notification);
+        return response()->json($notification, 200);
     }
 
     public function index(Request $request)
@@ -120,10 +146,10 @@ class ApiTransactionController extends Controller
                 ->get();
         }
 
-        return response()->json($transaction);
+        return response()->json($transaction, 200);
     }
 
-    public function store(Request $request)
+    public function store()
     {
         $validator = Validator::make(request()->all(), [
             'product_id' => 'required',
@@ -149,16 +175,32 @@ class ApiTransactionController extends Controller
 
         $transaction->save();
 
-        return response()->json($transaction);
+        return response()->json($transaction, 200);
     }
 
     public function show($id)
     {
-        // $user = auth()->guard('api')->user();
+        $user = auth()->guard('api')->user();
+        $user = User::find($user->id);
+        $transaction = Transaction::find($id);
 
-        $transactions = Transaction::with('product', 'seller')->find($id);
+        if ($transaction === null) {
+            return response()->json([
+                "success" => false,
+                "message" => "Transaction not found.",
+            ], 404);
+        }
 
-        return response()->json(new TransactionShow($transactions));
+        if ($user->id != $transaction->buyer_id) {
+            return response()->json([
+                "success" => false,
+                "message" => "You're not the owner of the transaction!",
+            ], 403);
+        }
+
+        $transaction = Transaction::with('product', 'seller')->where('buyer_id', $user->id)->find($id);
+
+        return response()->json(new TransactionShow($transaction), 200);
     }
 
     public function update(Request $request, $id)
@@ -175,6 +217,13 @@ class ApiTransactionController extends Controller
         $user = auth()->guard('api')->user();
         $transaction = Transaction::find($id);
 
+        if ($transaction === null) {
+            return response()->json([
+                "success" => false,
+                "message" => "Transaction not found.",
+            ], 404);
+        }
+
         if ($user->id != $transaction->buyer_id) {
             return response()->json([
                 "success" => false,
@@ -186,7 +235,7 @@ class ApiTransactionController extends Controller
         $transaction->price = $request->price;
         $transaction->save();
 
-        return response()->json($transaction);
+        return response()->json($transaction, 200);
     }
 
     public function updateStatus(Request $request, $id)
@@ -203,13 +252,20 @@ class ApiTransactionController extends Controller
         $transaction->status = $request->status;
         $transaction->save();
 
-        return response()->json($transaction);
+        return response()->json($transaction, 200);
     }
 
     public function destroy($id)
     {
         $user = auth()->guard('api')->user();
         $transaction = Transaction::find($id);
+
+        if ($transaction === null) {
+            return response()->json([
+                "success" => false,
+                "message" => "Transaction not found.",
+            ], 404);
+        }
 
         if ($user->id != $transaction->buyer_id) {
             return response()->json([
@@ -220,6 +276,9 @@ class ApiTransactionController extends Controller
 
         $transaction->delete();
 
-        return response()->json($transaction);
+        return response()->json([
+            "success" => true,
+            "message" => "Successfully deleted",
+        ], 200);
     }
 }
