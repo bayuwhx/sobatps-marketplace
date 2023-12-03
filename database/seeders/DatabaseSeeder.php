@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 1,
+            'user_id' => 3,
             'category_id' => 1,
             'title' => 'produk admin 1 ke 1',
             'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi, nesciunt.',
@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 1,
+            'user_id' => 3,
             'category_id' => 2,
             'title' => 'produk admin 1 ke 2',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, culpa?',
@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 1,
+            'user_id' => 3,
             'category_id' => 1,
             'title' => 'produk admin 1 ke 3',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, id.',
@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 1,
+            'user_id' => 3,
             'category_id' => 2,
             'title' => 'produk admin 1 ke 4',
             'description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. In, ea!',
@@ -115,7 +115,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 1,
+            'user_id' => 3,
             'category_id' => 1,
             'title' => 'produk admin 1 ke 5',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, doloremque?',
@@ -128,7 +128,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 2,
+            'user_id' => 3,
             'category_id' => 2,
             'title' => 'produk admin 2 ke 1',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, maiores.',
@@ -141,7 +141,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 2,
+            'user_id' => 3,
             'category_id' => 1,
             'title' => 'produk admin 2 ke 2',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, veniam!',
@@ -154,7 +154,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 2,
+            'user_id' => 3,
             'category_id' => 2,
             'title' => 'produk admin 2 ke 3',
             'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae, vel!',
@@ -167,7 +167,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 2,
+            'user_id' => 3,
             'category_id' => 1,
             'title' => 'produk admin 2 ke 4',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, magnam.',
@@ -180,7 +180,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'user_id' => 2,
+            'user_id' => 3,
             'category_id' => 2,
             'title' => 'produk admin 2 ke 5',
             'description' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, fugiat.',
