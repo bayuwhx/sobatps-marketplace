@@ -148,17 +148,9 @@
                             </h2>
                             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    <strong>This is the first item's accordion body.</strong> It is shown by default, until
-                                    the
-                                    collapse plugin adds the appropriate classes that we use to style each element. These
-                                    classes
-                                    control the overall appearance, as well as the showing and hiding via CSS transitions.
-                                    You can
-                                    modify any of this with custom CSS or overriding our default variables. It's also worth
-                                    noting
-                                    that just about any HTML can go within the <code>.accordion-body</code>, though the
-                                    transition
-                                    does limit overflow.
+                                    Produk yang dipasarkan dalam aplikasi ini merupakan <strong> asli olahan hasil hutan
+                                    </strong> yang dikordinir oleh Pemerintah Kalimantan Utara melalui KUPS yang terdapat di
+                                    Provinsi Kalimantan Utara.
                                 </div>
                             </div>
                         </div>
@@ -172,17 +164,14 @@
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                    until the
-                                    collapse plugin adds the appropriate classes that we use to style each element. These
-                                    classes
-                                    control the overall appearance, as well as the showing and hiding via CSS transitions.
-                                    You can
-                                    modify any of this with custom CSS or overriding our default variables. It's also worth
-                                    noting
-                                    that just about any HTML can go within the <code>.accordion-body</code>, though the
-                                    transition
-                                    does limit overflow.
+                                    Pertama pastikan anda <strong>membuat akun dan login</strong> kedalam aplikasi.
+                                    Selanjutnya anda bisa
+                                    menuju ke <strong>produk dan pilihlah salah satu produk</strong>. Setelah masuk di
+                                    halaman detail
+                                    produk anda bisa melakukan penawaran dengan <strong>tombol beli produk</strong>. Sesaat
+                                    anda
+                                    berada di halaman penawaran, anda bisa mengajukan banyak produk dan harga yang
+                                    ditawarkan serta jangan lupa untuk klik tombol ajukan tawaran.
                                 </div>
                             </div>
                         </div>
@@ -191,22 +180,13 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
                                     aria-controls="panelsStayOpen-collapseThree">
-                                    Apakah produk yang dipasarkan asli dan berkualitas ?
+                                    Apakah saya bisa memeriksa penawaran yang saya ajukan?
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                                 <div class="accordion-body">
-                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until
-                                    the
-                                    collapse plugin adds the appropriate classes that we use to style each element. These
-                                    classes
-                                    control the overall appearance, as well as the showing and hiding via CSS transitions.
-                                    You can
-                                    modify any of this with custom CSS or overriding our default variables. It's also worth
-                                    noting
-                                    that just about any HTML can go within the <code>.accordion-body</code>, though the
-                                    transition
-                                    does limit overflow.
+                                    Tentu saja! anda bisa memeriksa kapanpun pembaruan tawaran anda pada logo lonceng untuk
+                                    melihat notifikasi tawaran yang anda ajukan.
                                 </div>
                             </div>
                         </div>
