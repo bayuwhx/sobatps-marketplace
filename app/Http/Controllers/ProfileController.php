@@ -85,7 +85,7 @@ class ProfileController extends Controller
             'email' => 'required|email:dns',
             'address' => 'required|max:255',
             'city' => 'required|max:255',
-            'phone' => 'required',
+            'phone' => ['required', 'regex:/^(62)[0-9]{11}/'],
         ];
 
         if ($request->username != Auth::user()->username) {

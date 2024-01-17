@@ -67,6 +67,7 @@ return [
     |
      */
 
+    // 'timezone' => env('ID_TIMEZONE', 'UTC'),
     'timezone' => env('ID_TIMEZONE', 'UTC'),
 
     /*
